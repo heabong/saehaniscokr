@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>채팅상담 | 새한신용정보 일산지사</title>
+<meta name="description" content="새한신용정보 일산지사 비대면 채팅상담 — 전화 없이 채팅으로 편하게 상담.">
+<link rel="stylesheet" href="../css/common.css">
+<style>
+.chat-page-wrap{display:grid;grid-template-columns:1fr 360px;gap:2rem;align-items:start;}
+.chat-main{background:#fff;border-radius:20px;border:1.5px solid #f0f0f0;overflow:hidden;}
+.chat-page-header{background:#111;padding:1.4rem 1.6rem;display:flex;align-items:center;gap:12px;}
+.chat-page-av{width:46px;height:46px;background:#e8400c;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;flex-shrink:0;}
+.chat-page-name{font-size:15px;font-weight:700;color:#fff;}
+.chat-page-status{font-size:12px;color:#22c55e;margin-top:2px;}
+.chat-page-msgs{padding:1.6rem;display:flex;flex-direction:column;gap:12px;min-height:420px;max-height:480px;overflow-y:auto;background:#fafafa;}
+.chat-page-msg{max-width:78%;padding:11px 16px;border-radius:16px;font-size:14px;line-height:1.65;}
+.chat-page-msg.bot{background:#fff;color:#111;border-radius:4px 16px 16px 16px;align-self:flex-start;border:1px solid #e8e8e8;box-shadow:0 1px 4px rgba(0,0,0,0.05);}
+.chat-page-msg.user{background:#111;color:#fff;border-radius:16px 4px 16px 16px;align-self:flex-end;}
+.chat-page-msg.bot .msg-time{font-size:11px;color:#bbb;margin-top:4px;}
+.chat-page-msg.user .msg-time{font-size:11px;color:#666;margin-top:4px;text-align:right;}
+.chat-input-area{padding:1rem 1.2rem;border-top:1px solid #f0f0f0;background:#fff;}
+.chat-quick-btns{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
+.chat-quick-btn{padding:6px 12px;border-radius:20px;border:1.5px solid #e0e0e0;font-size:12px;font-family:'Noto Sans KR',sans-serif;color:#555;background:#fff;cursor:pointer;transition:all 0.15s;white-space:nowrap;}
+.chat-quick-btn:hover{border-color:#e8400c;color:#e8400c;}
+.chat-input-row{display:flex;gap:8px;}
+.chat-page-input{flex:1;padding:12px 18px;border:1.5px solid #e0e0e0;border-radius:50px;font-size:14px;font-family:'Noto Sans KR',sans-serif;outline:none;}
+.chat-page-input:focus{border-color:#111;}
+.chat-page-send{background:#e8400c;color:#fff;border:none;border-radius:50px;padding:12px 20px;font-size:14px;font-weight:700;font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:background 0.2s;white-space:nowrap;}
+.chat-page-send:hover{background:#c73208;}
+.chat-side{display:flex;flex-direction:column;gap:1.2rem;}
+.chat-info-card{background:#f7f7f7;border-radius:16px;padding:1.6rem;}
+.chat-info-card h3{font-size:14px;font-weight:700;color:#111;margin-bottom:0.8rem;}
+.chat-info-item{display:flex;align-items:center;gap:10px;padding:0.7rem 0;border-bottom:1px solid #efefef;font-size:13px;color:#555;}
+.chat-info-item:last-child{border-bottom:none;}
+.chat-info-item .ci-icon{font-size:18px;flex-shrink:0;}
+.chat-info-item a{color:#111;text-decoration:none;font-weight:700;}
+.chat-info-item a:hover{color:#e8400c;}
+.chat-notice{background:#fff8f6;border:1.5px solid #fbd5c8;border-radius:14px;padding:1.2rem 1.4rem;font-size:12px;color:#888;line-height:1.8;}
+.chat-notice strong{color:#e8400c;}
+@media(max-width:768px){.chat-page-wrap{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="quick-menu">
+  <button class="quick-btn qb-call" onclick="window.open('tel:010-8266-5779')"><span class="q-icon">📞</span><span class="q-label">무료상담</span></button>
+  <button class="quick-btn qb-direct" onclick="window.open('tel:010-8266-5779')"><span class="q-icon">📱</span><span class="q-label">직통</span></button>
+  <button class="quick-btn qb-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><span class="q-icon">↑</span><span class="q-label">TOP</span></button>
+</div>
+
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html"><img src="../images/logo.png" alt="새한신용정보주식회사" style="height:auto;max-height:52px;width:auto;max-width:200px;object-fit:contain;display:block;"></a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="../index.html">홈</a></li>
+        <li><a href="collection.html">사업안내 ▾</a><div class="dropdown"><a href="collection.html">채권추심</a><a href="credit.html">재산·신용조사</a></div></li>
+        <li><a href="about.html">회사소개 ▾</a><div class="dropdown"><a href="about.html">대표이사 인사말</a><a href="about.html#history">회사연혁</a><a href="about.html#vision">VISION</a><a href="about.html#map">오시는길</a></div></li>
+        <li><a href="notice.html">공지사항</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="chat.html" class="active">채팅상담</a></li>
+        <li><a href="contact.html">연락처</a></li>
+      </ul>
+      <button class="nav-call" onclick="window.open('tel:010-8266-5779')">📞 1800-5549</button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-in">
+    <div class="page-breadcrumb"><a href="../index.html" style="color:#555;text-decoration:none;">홈</a> <span>›</span> <span class="cur">채팅상담</span></div>
+    <h1>채팅상담</h1>
+    <p>전화가 어려우신가요? 채팅으로 편하게 상담하세요 — 평일 09:00~18:00</p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="chat-page-wrap">
+
+    <div class="chat-main">
+      <div class="chat-page-header">
+        <div class="chat-page-av">정</div>
+        <div>
+          <div class="chat-page-name">정해봉 담당자 · 새한신용정보 일산지사</div>
+          <div class="chat-page-status">● 상담 가능 (평일 09:00–18:00)</div>
+        </div>
+      </div>
+      <div class="chat-page-msgs" id="chatMsgs">
+        <div class="chat-page-msg bot">안녕하세요! 새한신용정보 일산지사 담당자 정해봉입니다 😊<div class="msg-time">방금</div></div>
+        <div class="chat-page-msg bot">채권추심, 재산조사 등 궁금한 점을 편하게 말씀해 주세요.<div class="msg-time">방금</div></div>
+        <div class="chat-page-msg bot">아래 빠른 질문 버튼을 클릭하셔도 됩니다.<div class="msg-time">방금</div></div>
+      </div>
+      <div class="chat-input-area">
+        <div class="chat-quick-btns">
+          <button class="chat-quick-btn" onclick="quickSend('상담 비용이 궁금합니다')">💰 비용 문의</button>
+          <button class="chat-quick-btn" onclick="quickSend('추심 절차를 알고 싶습니다')">📋 추심 절차</button>
+          <button class="chat-quick-btn" onclick="quickSend('소멸시효가 걱정됩니다')">⏰ 소멸시효</button>
+          <button class="chat-quick-btn" onclick="quickSend('필요한 서류가 무엇인가요?')">📄 필요 서류</button>
+          <button class="chat-quick-btn" onclick="quickSend('합법적인 추심인지 궁금합니다')">⚖️ 합법성</button>
+        </div>
+        <div class="chat-input-row">
+          <input class="chat-page-input" id="chatInput" type="text" placeholder="문의 내용을 입력하세요..." onkeydown="if(event.key==='Enter')sendMsg()">
+          <button class="chat-page-send" onclick="sendMsg()">전송</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-side">
+      <div class="chat-info-card">
+        <h3>📞 빠른 연락처</h3>
+        <div class="chat-info-item"><span class="ci-icon">📞</span><div>상담신청 대표번호<br><a href="tel:010-8266-5779">1800-5549</a></div></div>
+        <div class="chat-info-item"><span class="ci-icon">📱</span><div>담당자 직통<br><a href="tel:010-8266-5779">010-8266-5779</a></div></div>
+        <div class="chat-info-item"><span class="ci-icon">🏢</span><div>고객센터<br><a href="tel:031-994-7299">031-994-7299</a></div></div>
+        <div class="chat-info-item"><span class="ci-icon">📠</span><div>서류팩스<br>0504-081-5779</div></div>
+        <div class="chat-info-item"><span class="ci-icon">✉️</span><div>이메일<br><a href="mailto:jeps@naver.com" style="color:inherit;">jeps@naver.com</a></div></div>
+      </div>
+
+      <div class="chat-info-card">
+        <h3>🕐 운영 시간</h3>
+        <div class="chat-info-item"><span class="ci-icon">📅</span><div>평일 09:00 – 18:00<br><span style="color:#bbb;font-size:12px;">토·일·공휴일 휴무</span></div></div>
+      </div>
+
+      <div class="chat-notice">
+        <strong>안내</strong><br>
+        채팅상담은 간단한 질의응답 서비스입니다. 정확한 채권 회수 가능성 검토 및 위임 계약은 전화 상담 또는 방문 상담으로 진행됩니다.<br><br>
+        개인정보(주민등록번호, 계좌번호 등)는 채팅으로 전달하지 마세요.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-in">
+    <div class="footer-top">
+      <div><div class="footer-brand">새한신용정보주식회사 <span>일산지사</span></div><div class="footer-info">경기도 고양시 일산동구 장백로 204, 203호 (장항동, 보림빌딩)<br><strong>상담</strong> 1800-5549 · <strong>직통</strong> 010-8266-5779 · <strong>고객센터</strong> 031-994-7299<br><strong>팩스</strong> 031-994-7470 · <strong>서류팩스</strong> 0504-081-5779 · <strong>이메일</strong> <a href="mailto:jeps@naver.com" style="color:inherit;">jeps@naver.com</a></div></div>
+      <div><div class="footer-info" style="text-align:right;">금융위원회 등록 신용정보업자<br>1968년 창사 · 평일 09:00–18:00</div></div>
+    </div>
+    <div class="footer-orgs">
+      <div class="footer-orgs-title">관련기관</div>
+      <div class="footer-org-list">
+        <a class="footer-org-link" href="https://www.fsc.go.kr" target="_blank" rel="noopener"><img src="../images/org-fsc.png" alt="금융위원회"><span>금융위원회</span></a>
+        <a class="footer-org-link" href="https://www.moef.go.kr" target="_blank" rel="noopener"><img src="../images/org-moef.png" alt="기획재정부"><span>기획재정부</span></a>
+        <a class="footer-org-link" href="https://www.cica.or.kr" target="_blank" rel="noopener"><img src="../images/org-cica.png" alt="신용정보협회"><span>신용정보협회</span></a>
+        <a class="footer-org-link" href="https://www.fss.or.kr" target="_blank" rel="noopener"><img src="../images/org-fss.png" alt="금융감독원"><span>금융감독원</span></a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2025 새한신용정보주식회사 일산지사. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+const replies = {
+  '비용': '상담은 완전 무료입니다. 추심 수수료는 성공보수 방식으로, 채권 회수 시에만 발생합니다. 미회수 시 비용 없음. 정확한 수수료는 📞 1800-5549로 전화 주시면 안내드립니다.',
+  '수수료': '추심 수수료는 성공보수 방식입니다. 회수된 금액의 일정 비율로, 미회수 시에는 비용이 발생하지 않습니다. 2024년부터 수수료에 부가세(10%) 부과.',
+  '절차': '① 무료상담 → ② 위임계약 → ③ 채무자 소재 파악 → ④ 내용증명 발송 → ⑤ 직접 추심 → ⑥ 법적 절차 연계 → ⑦ 채권 회수 순으로 진행됩니다.',
+  '소멸시효': '채권 종류에 따라 시효가 다릅니다. 상업채권 5년, 일반민사 10년, 판결채권 10년. 시효 완성 전 반드시 조치가 필요합니다. 지금 바로 📞 1800-5549로 상담 받으세요.',
+  '서류': '기본 서류: 채권 증빙(계약서·거래명세서 등), 채무자 인적사항, 의뢰인 신분증. 자세한 목록은 📞 1800-5549로 문의하시면 안내드립니다.',
+  '합법': '새한신용정보주식회사는 금융위원회에 등록된 합법 신용정보업자입니다. 채무자 인권을 보호하며 법령 테두리 안에서만 추심합니다.',
+  '전국': '전국 어디든 가능합니다. 새한신용정보 전국 지사 네트워크로 채무자 위치에 관계없이 처리합니다.',
+  '소액': '금액에 관계없이 상담 가능합니다. 소액일수록 소멸시효가 문제가 되므로 빠른 상담을 권장합니다.',
+};
+const defaultReplies = [
+  '더 자세한 상담은 📞 1800-5549(무료) 또는 010-8266-5779로 전화 주시면 담당자 정해봉이 직접 답변드립니다.',
+  '연락 가능한 번호를 남겨주시면 담당자가 직접 연락드리겠습니다.',
+  '추심 가능 여부와 예상 수수료는 📞 1800-5549 전화 상담으로 무료로 확인하실 수 있습니다.',
+  '궁금하신 점이 있으면 편하게 말씀해 주세요. 담당자 정해봉이 성실히 답변드리겠습니다.',
+];
+let dri = 0;
+
+function getReply(msg) {
+  for(const [k, v] of Object.entries(replies)){
+    if(msg.includes(k)) return v;
+  }
+  return defaultReplies[dri++ % defaultReplies.length];
+}
+
+function now(){
+  return new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
+}
+
+function addMsg(text, type){
+  const box = document.getElementById('chatMsgs');
+  const d = document.createElement('div');
+  d.className = 'chat-page-msg ' + type;
+  d.innerHTML = text + '<div class="msg-time">' + now() + '</div>';
+  box.appendChild(d);
+  box.scrollTop = box.scrollHeight;
+}
+
+function sendMsg(){
+  const inp = document.getElementById('chatInput');
+  const txt = inp.value.trim();
+  if(!txt) return;
+  addMsg(txt, 'user');
+  inp.value = '';
+  setTimeout(()=>{ addMsg(getReply(txt), 'bot'); }, 700);
+}
+
+function quickSend(txt){
+  document.getElementById('chatInput').value = txt;
+  sendMsg();
+}
+</script>
+<script>
+  (function(){var w=window;if(w.ChannelIO){return;}var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(args){ch.q.push(args);};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return;}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x);}}if(document.readyState==="complete"){l();}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l);}})();
+  ChannelIO('boot', {pluginKey: '051a4984-9c5f-41e2-873e-60fdfc117c1f'});
+</script>
+<script src="../js/shs-data.js"></script>
+<script>SHS.applyAll();</script>
+</body>
+</html>
+

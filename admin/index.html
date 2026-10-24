@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>관리자 | 새한신용정보 일산지사</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;}
+body{font-family:'Noto Sans KR',sans-serif;background:#f5f5f5;color:#1e2028;line-height:1.6;}
+button,input,select,textarea{font-family:'Noto Sans KR',sans-serif;}
+::selection{background:#e8400c;color:#fff;}
+
+/* ── 로그인 화면 ── */
+#loginScreen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0a0a0a;padding:2rem;}
+.login-box{width:100%;max-width:380px;background:#1e2028;border-radius:20px;padding:2.6rem 2.2rem;box-shadow:0 24px 80px rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.06);}
+.login-logo{font-size:13px;font-weight:700;color:#e8400c;letter-spacing:3px;margin-bottom:0.6rem;}
+.login-title{font-size:24px;font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:0.5rem;}
+.login-sub{font-size:13px;color:#777;margin-bottom:2rem;line-height:1.7;}
+.login-input{width:100%;padding:14px 18px;border-radius:12px;border:1.5px solid #333;background:#15161c;color:#fff;font-size:15px;outline:none;margin-bottom:0.8rem;letter-spacing:2px;}
+.login-input:focus{border-color:#e8400c;}
+.login-btn{width:100%;padding:14px;border-radius:12px;border:none;background:#e8400c;color:#fff;font-size:15px;font-weight:700;cursor:pointer;transition:background 0.2s;}
+.login-btn:hover{background:#c73208;}
+.login-error{font-size:12px;color:#ff6b5b;margin-bottom:0.8rem;min-height:16px;}
+
+/* ── 상단바 ── */
+.admin-topbar{background:#1e2028;padding:0 1.6rem;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;}
+.admin-brand{display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:700;}
+.admin-brand span{color:#e8400c;}
+.admin-brand small{color:#666;font-weight:400;font-size:11px;margin-left:8px;}
+.admin-topbar-actions{display:flex;align-items:center;gap:10px;}
+.admin-view-link{font-size:12px;color:#aaa;text-decoration:none;padding:8px 14px;border-radius:20px;border:1px solid #333;transition:all 0.2s;}
+.admin-view-link:hover{border-color:#666;color:#fff;}
+.logout-btn{background:none;border:1px solid #444;color:#ccc;font-size:12px;padding:8px 16px;border-radius:20px;cursor:pointer;transition:all 0.2s;}
+.logout-btn:hover{border-color:#e8400c;color:#e8400c;}
+
+/* ── 레이아웃 ── */
+.admin-layout{display:flex;min-height:calc(100vh - 60px);}
+.admin-sidebar{width:200px;flex-shrink:0;background:#1e2028;padding:1.2rem 0.8rem;display:flex;flex-direction:column;gap:4px;}
+.admin-tab-btn{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;border:none;background:none;color:#999;font-size:14px;font-weight:500;text-align:left;cursor:pointer;transition:all 0.15s;width:100%;}
+.admin-tab-btn:hover{background:#26283a;color:#fff;}
+.admin-tab-btn.active{background:#e8400c;color:#fff;font-weight:700;}
+.admin-content{flex:1;padding:2.2rem 2.6rem;max-width:980px;}
+
+/* ── 공통 컴포넌트 ── */
+.admin-notice-bar{background:#fff8f6;border:1.5px solid #fbd5c8;border-radius:12px;padding:1rem 1.4rem;font-size:12.5px;color:#a0552f;line-height:1.8;margin-bottom:1.8rem;}
+.panel-title{font-size:22px;font-weight:900;letter-spacing:-0.8px;margin-bottom:0.4rem;}
+.panel-desc{font-size:13px;color:#888;margin-bottom:1.8rem;}
+.card{background:#fff;border-radius:16px;padding:1.6rem 1.8rem;border:1.5px solid #eee;margin-bottom:1.2rem;}
+.card h3{font-size:15px;font-weight:700;margin-bottom:1rem;}
+.field{margin-bottom:1rem;}
+.field label{display:block;font-size:12px;font-weight:700;color:#555;margin-bottom:6px;}
+.field input[type=text],.field input[type=email],.field input[type=date],.field select,.field textarea{width:100%;padding:11px 14px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:14px;outline:none;transition:border-color 0.15s;color:#1e2028;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#e8400c;}
+.field textarea{resize:vertical;min-height:80px;line-height:1.7;}
+.field-row{display:flex;gap:0.8rem;}
+.field-row>.field{flex:1;}
+.checkline{display:flex;align-items:center;gap:8px;font-size:13px;color:#555;}
+.checkline input{width:16px;height:16px;accent-color:#e8400c;}
+
+.btn{display:inline-flex;align-items:center;gap:6px;padding:11px 20px;border-radius:24px;border:none;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.15s;}
+.btn-primary{background:#e8400c;color:#fff;}
+.btn-primary:hover{background:#c73208;}
+.btn-dark{background:#1e2028;color:#fff;}
+.btn-dark:hover{background:#333;}
+.btn-line{background:#fff;color:#555;border:1.5px solid #ddd;}
+.btn-line:hover{border-color:#999;}
+.btn-danger{background:#fff;color:#e8400c;border:1.5px solid #f3c3b0;}
+.btn-danger:hover{background:#fff5f2;}
+.btn-sm{padding:7px 14px;font-size:12px;}
+
+/* ── 목록 ── */
+.item-row{display:flex;align-items:flex-start;gap:1rem;padding:1rem 0;border-bottom:1px solid #f0f0f0;}
+.item-row:last-child{border-bottom:none;}
+.item-tag{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;background:#fff0ec;color:#e8400c;flex-shrink:0;margin-top:2px;white-space:nowrap;}
+.item-main{flex:1;min-width:0;}
+.item-title{font-size:14px;font-weight:700;color:#1e2028;margin-bottom:3px;}
+.item-sub{font-size:12px;color:#999;}
+.item-actions{display:flex;gap:6px;flex-shrink:0;}
+.cat-label{font-size:11px;font-weight:700;color:#888;letter-spacing:1px;margin:1.2rem 0 0.4rem;}
+.cat-label:first-child{margin-top:0;}
+.empty-hint{font-size:13px;color:#aaa;padding:1.6rem 0;text-align:center;}
+
+/* ── 팝업/이미지 ── */
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:0.4rem 0 1.2rem;}
+.switch{position:relative;width:46px;height:26px;flex-shrink:0;}
+.switch input{opacity:0;width:0;height:0;}
+.slider{position:absolute;inset:0;background:#ddd;border-radius:26px;cursor:pointer;transition:0.2s;}
+.slider::before{content:'';position:absolute;width:20px;height:20px;left:3px;top:3px;background:#fff;border-radius:50%;transition:0.2s;box-shadow:0 1px 3px rgba(0,0,0,0.3);}
+.switch input:checked+.slider{background:#e8400c;}
+.switch input:checked+.slider::before{transform:translateX(20px);}
+
+.img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;}
+.img-card{background:#fff;border:1.5px solid #eee;border-radius:14px;overflow:hidden;}
+.img-card .thumb{width:100%;height:130px;background:#f0f0f0;object-fit:cover;display:block;}
+.img-card .thumb-wrap{position:relative;}
+.img-card .badge{position:absolute;top:8px;left:8px;background:rgba(232,64,12,0.92);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;}
+.img-card-body{padding:0.9rem 1rem;}
+.img-card-label{font-size:13px;font-weight:700;margin-bottom:0.7rem;line-height:1.4;}
+.img-card-actions{display:flex;gap:6px;flex-wrap:wrap;}
+.file-btn{position:relative;overflow:hidden;display:inline-block;}
+.file-btn input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;}
+
+.storage-bar{height:6px;background:#eee;border-radius:6px;overflow:hidden;margin-top:0.5rem;}
+.storage-fill{height:100%;background:#e8400c;transition:width 0.3s;}
+.storage-txt{font-size:11px;color:#999;margin-top:6px;}
+
+/* ── 토스트 ── */
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:#1e2028;color:#fff;padding:13px 24px;border-radius:30px;font-size:13px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,0.25);opacity:0;pointer-events:none;transition:all 0.25s;z-index:999;}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+@media(max-width:768px){
+  .admin-layout{flex-direction:column;}
+  .admin-sidebar{width:100%;flex-direction:row;overflow-x:auto;}
+  .admin-content{padding:1.4rem 1.2rem;}
+  .field-row{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ 로그인 ══ -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-logo">SAEHANSHINUONG · ADMIN</div>
+    <div class="login-title">관리자 로그인</div>
+    <div class="login-sub">새한신용정보 일산지사 홈페이지 관리자 페이지입니다.<br>비밀번호를 입력해 주세요.</div>
+    <div class="login-error" id="loginError"></div>
+    <input class="login-input" type="password" id="loginPw" placeholder="비밀번호" autocomplete="current-password">
+    <button class="login-btn" onclick="doLogin()">로그인</button>
+  </div>
+</div>
+
+<!-- ══ 대시보드 ══ -->
+<div id="dashboard" style="display:none;">
+  <div class="admin-topbar">
+    <div class="admin-brand">새한신용정보 <span>일산지사</span><small>관리자 페이지</small></div>
+    <div class="admin-topbar-actions">
+      <a class="admin-view-link" href="../index.html" target="_blank">사이트 새 탭으로 보기 ↗</a>
+      <button class="logout-btn" onclick="doLogout()">로그아웃</button>
+    </div>
+  </div>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <button class="admin-tab-btn active" data-tab="notice" onclick="showTab('notice')">📢 공지사항</button>
+      <button class="admin-tab-btn" data-tab="faq" onclick="showTab('faq')">❓ FAQ</button>
+      <button class="admin-tab-btn" data-tab="popup" onclick="showTab('popup')">🪧 팝업</button>
+      <button class="admin-tab-btn" data-tab="images" onclick="showTab('images')">🖼️ 이미지</button>
+      <button class="admin-tab-btn" data-tab="contact" onclick="showTab('contact')">☎️ 연락처</button>
+      <button class="admin-tab-btn" data-tab="settings" onclick="showTab('settings')">⚙️ 설정</button>
+    </aside>
+    <main class="admin-content">
+      <div class="admin-notice-bar">
+        ℹ️ 이 관리자 페이지는 별도 서버 없이 <strong>이 브라우저(이 컴퓨터)</strong>에 변경 내용을 저장합니다. 저장 후 홈페이지를 <strong>같은 브라우저</strong>에서 열면 바로 반영된 내용을 확인할 수 있습니다. (다른 컴퓨터·다른 브라우저에는 자동으로 반영되지 않습니다.)
+      </div>
+
+      <!-- 공지사항 -->
+      <div class="admin-panel" id="panel-notice">
+        <div class="panel-title">공지사항 관리</div>
+        <div class="panel-desc">홈페이지 · 공지사항 페이지에 표시되는 공지글을 추가·수정·삭제합니다.</div>
+        <div class="card" id="noticeFormCard"></div>
+        <div class="card" id="noticeListCard"></div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="admin-panel" id="panel-faq" style="display:none;">
+        <div class="panel-title">FAQ 관리</div>
+        <div class="panel-desc">자주 묻는 질문과 답변을 추가·수정·삭제합니다. "홈페이지 노출"에 체크하면 메인 페이지 FAQ에도 표시됩니다.</div>
+        <div class="card" id="faqFormCard"></div>
+        <div class="card" id="faqListCard"></div>
+      </div>
+
+      <!-- 팝업 -->
+      <div class="admin-panel" id="panel-popup" style="display:none;">
+        <div class="panel-title">팝업 관리</div>
+        <div class="panel-desc">홈페이지 접속 시 뜨는 팝업의 문구·이미지·노출 여부를 설정합니다.</div>
+        <div class="card" id="popupCard"></div>
+      </div>
+
+      <!-- 이미지 -->
+      <div class="admin-panel" id="panel-images" style="display:none;">
+        <div class="panel-title">이미지 관리</div>
+        <div class="panel-desc">각 페이지에서 사용되는 주요 이미지를 교체합니다. 업로드한 이미지는 자동으로 용량이 줄어들어 저장됩니다.</div>
+        <div class="card" id="storageCard"></div>
+        <div class="img-grid" id="imageGrid"></div>
+      </div>
+
+      <!-- 연락처 -->
+      <div class="admin-panel" id="panel-contact" style="display:none;">
+        <div class="panel-title">연락처 정보 관리</div>
+        <div class="panel-desc">전화번호·팩스·이메일·주소·운영시간을 수정합니다. 사이트 전체(홈, 공지사항, FAQ, 연락처, 회사소개 등)에 자동 반영됩니다.</div>
+        <div class="card" id="contactCard"></div>
+      </div>
+
+      <!-- 설정 -->
+      <div class="admin-panel" id="panel-settings" style="display:none;">
+        <div class="panel-title">설정</div>
+        <div class="panel-desc">관리자 비밀번호 변경 및 데이터 초기화</div>
+        <div class="card" id="passwordCard"></div>
+        <div class="card" id="resetCard"></div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="../js/shs-data.js"></script>
+<script>
+var DATA = null;
+var editingNoticeId = null;
+var editingFaqId = null;
+
+/* ── 인증 ── */
+function doLogin(){
+  var pw = document.getElementById('loginPw').value;
+  if(SHS.login(pw)){
+    document.getElementById('loginError').textContent = '';
+    enterDashboard();
+  } else {
+    document.getElementById('loginError').textContent = '비밀번호가 올바르지 않습니다.';
+  }
+}
+document.getElementById('loginPw').addEventListener('keydown', function(e){ if(e.key==='Enter') doLogin(); });
+
+function doLogout(){
+  SHS.logout();
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('loginPw').value = '';
+}
+
+function enterDashboard(){
+  DATA = SHS.load();
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+  renderNoticeForm(); renderNoticeList();
+  renderFaqForm(); renderFaqList();
+  renderPopupPanel();
+  renderImagePanel();
+  renderContactPanel();
+  renderSettingsPanel();
+}
+
+if(SHS.isAuthed()) enterDashboard();
+
+/* ── 탭 전환 ── */
+function showTab(tab){
+  document.querySelectorAll('.admin-tab-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.tab===tab); });
+  document.querySelectorAll('.admin-panel').forEach(function(p){ p.style.display = (p.id === 'panel-'+tab) ? '' : 'none'; });
+}
+
+/* ── 토스트 ── */
+var toastTimer;
+function toast(msg){
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 2000);
+}
+
+function persist(){
+  try{
+    SHS.save(DATA);
+    return true;
+  }catch(e){
+    alert('저장에 실패했습니다. 브라우저 저장공간이 가득 찼을 수 있습니다.\n(이미지 용량을 줄이거나 사용하지 않는 이미지를 원본으로 복원해 보세요)\n\n' + e.message);
+    return false;
+  }
+}
+
+/* ==================== 공지사항 ==================== */
+var NOTICE_TAGS = [['law','법령안내'],['biz','업무안내'],['service','서비스'],['notice','공지']];
+
+function todayStr(){
+  var d = new Date();
+  return d.getFullYear()+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+String(d.getDate()).padStart(2,'0');
+}
+
+function renderNoticeForm(){
+  var n = editingNoticeId ? DATA.notices.find(function(x){return x.id===editingNoticeId;}) : null;
+  var opts = NOTICE_TAGS.map(function(t){
+    return '<option value="'+t[0]+'"'+((n&&n.tag===t[0])?' selected':'')+'>'+t[1]+'</option>';
+  }).join('');
+  document.getElementById('noticeFormCard').innerHTML =
+    '<h3>'+(n? '공지 수정':'새 공지 추가')+'</h3>'+
+    '<div class="field-row">'+
+      '<div class="field"><label>분류</label><select id="nfTag">'+opts+'</select></div>'+
+      '<div class="field"><label>날짜</label><input type="text" id="nfDate" placeholder="2026.07.04" value="'+SHS.escapeHtml(n?n.date:todayStr())+'"></div>'+
+    '</div>'+
+    '<div class="field"><label>제목</label><input type="text" id="nfTitle" placeholder="공지 제목을 입력하세요" value="'+SHS.escapeHtml(n?n.title:'')+'"></div>'+
+    '<div class="field"><label>내용</label><textarea id="nfBody" placeholder="공지 내용을 입력하세요">'+SHS.escapeHtml(n?n.body:'')+'</textarea></div>'+
+    '<div style="display:flex;gap:8px;">'+
+      '<button class="btn btn-primary" onclick="saveNotice()">'+(n?'수정 저장':'추가하기')+'</button>'+
+      (n? '<button class="btn btn-line" onclick="editingNoticeId=null;renderNoticeForm();">취소</button>' : '')+
+    '</div>';
+}
+
+function saveNotice(){
+  var tag = document.getElementById('nfTag').value;
+  var date = document.getElementById('nfDate').value.trim();
+  var title = document.getElementById('nfTitle').value.trim();
+  var body = document.getElementById('nfBody').value.trim();
+  if(!title || !body){ alert('제목과 내용을 입력해 주세요.'); return; }
+  if(editingNoticeId){
+    var n = DATA.notices.find(function(x){return x.id===editingNoticeId;});
+    n.tag=tag; n.date=date; n.title=title; n.body=body;
+  } else {
+    DATA.notices.unshift({ id:'n'+Date.now(), tag:tag, date:date, title:title, body:body });
+  }
+  if(!persist()) return;
+  editingNoticeId = null;
+  renderNoticeForm(); renderNoticeList();
+  toast('공지사항이 저장되었습니다.');
+}
+
+function editNotice(id){ editingNoticeId = id; renderNoticeForm(); window.scrollTo({top:0,behavior:'smooth'}); }
+
+function deleteNotice(id){
+  if(!confirm('이 공지를 삭제하시겠습니까?')) return;
+  DATA.notices = DATA.notices.filter(function(x){return x.id!==id;});
+  if(!persist()) return;
+  if(editingNoticeId===id){ editingNoticeId=null; renderNoticeForm(); }
+  renderNoticeList();
+  toast('삭제되었습니다.');
+}
+
+function renderNoticeList(){
+  var el = document.getElementById('noticeListCard');
+  if(!DATA.notices.length){ el.innerHTML = '<div class="empty-hint">등록된 공지사항이 없습니다.</div>'; return; }
+  el.innerHTML = '<h3>등록된 공지 ('+DATA.notices.length+')</h3>' + DATA.notices.map(function(n){
+    return '<div class="item-row">'+
+      '<span class="item-tag">'+SHS.escapeHtml(SHS.TAG_LABELS[n.tag]||n.tag)+'</span>'+
+      '<div class="item-main"><div class="item-title">'+SHS.escapeHtml(n.title)+'</div><div class="item-sub">'+SHS.escapeHtml(n.date)+'</div></div>'+
+      '<div class="item-actions">'+
+        '<button class="btn btn-line btn-sm" onclick="editNotice(\''+n.id+'\')">수정</button>'+
+        '<button class="btn btn-danger btn-sm" onclick="deleteNotice(\''+n.id+'\')">삭제</button>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+
+/* ==================== FAQ ==================== */
+function faqCategories(){
+  var set = [];
+  DATA.faqs.forEach(function(f){ if(set.indexOf(f.cat)===-1) set.push(f.cat); });
+  return set;
+}
+
+function renderFaqForm(){
+  var f = editingFaqId ? DATA.faqs.find(function(x){return x.id===editingFaqId;}) : null;
+  var cats = faqCategories();
+  var opts = cats.map(function(c){ return '<option value="'+SHS.escapeHtml(c)+'"'+((f&&f.cat===c)?' selected':'')+'>'+SHS.escapeHtml(c)+'</option>'; }).join('');
+  opts += '<option value="__new__">➕ 새 분류 입력</option>';
+  document.getElementById('faqFormCard').innerHTML =
+    '<h3>'+(f?'FAQ 수정':'새 FAQ 추가')+'</h3>'+
+    '<div class="field"><label>분류</label><select id="ffCat" onchange="onFaqCatChange()">'+opts+'</select></div>'+
+    '<div class="field" id="ffNewCatWrap" style="display:none;"><label>새 분류명</label><input type="text" id="ffNewCat" placeholder="예: 계약 · 서류"></div>'+
+    '<div class="field"><label>질문</label><input type="text" id="ffQ" placeholder="질문을 입력하세요" value="'+SHS.escapeHtml(f?f.q:'')+'"></div>'+
+    '<div class="field"><label>답변</label><textarea id="ffA" placeholder="답변을 입력하세요">'+SHS.escapeHtml(f?f.a:'')+'</textarea></div>'+
+    '<div class="field checkline"><input type="checkbox" id="ffHome" '+(f&&f.home?'checked':'')+'><label for="ffHome" style="margin:0;font-weight:500;color:#555;">홈페이지 FAQ 영역에도 노출</label></div>'+
+    '<div style="display:flex;gap:8px;margin-top:0.6rem;">'+
+      '<button class="btn btn-primary" onclick="saveFaq()">'+(f?'수정 저장':'추가하기')+'</button>'+
+      (f? '<button class="btn btn-line" onclick="editingFaqId=null;renderFaqForm();">취소</button>' : '')+
+    '</div>';
+}
+
+function onFaqCatChange(){
+  document.getElementById('ffNewCatWrap').style.display = document.getElementById('ffCat').value==='__new__' ? '' : 'none';
+}
+
+function saveFaq(){
+  var cat = document.getElementById('ffCat').value;
+  if(cat==='__new__'){ cat = document.getElementById('ffNewCat').value.trim(); }
+  var q = document.getElementById('ffQ').value.trim();
+  var a = document.getElementById('ffA').value.trim();
+  var home = document.getElementById('ffHome').checked;
+  if(!cat || !q || !a){ alert('분류, 질문, 답변을 모두 입력해 주세요.'); return; }
+  if(editingFaqId){
+    var f = DATA.faqs.find(function(x){return x.id===editingFaqId;});
+    f.cat=cat; f.q=q; f.a=a; f.home=home;
+  } else {
+    DATA.faqs.push({ id:'f'+Date.now(), cat:cat, q:q, a:a, home:home });
+  }
+  if(!persist()) return;
+  editingFaqId = null;
+  renderFaqForm(); renderFaqList();
+  toast('FAQ가 저장되었습니다.');
+}
+
+function editFaq(id){ editingFaqId = id; renderFaqForm(); window.scrollTo({top:0,behavior:'smooth'}); }
+
+function deleteFaq(id){
+  if(!confirm('이 FAQ를 삭제하시겠습니까?')) return;
+  DATA.faqs = DATA.faqs.filter(function(x){return x.id!==id;});
+  if(!persist()) return;
+  if(editingFaqId===id){ editingFaqId=null; renderFaqForm(); }
+  renderFaqList();
+  toast('삭제되었습니다.');
+}
+
+function renderFaqList(){
+  var el = document.getElementById('faqListCard');
+  if(!DATA.faqs.length){ el.innerHTML = '<div class="empty-hint">등록된 FAQ가 없습니다.</div>'; return; }
+  var lastCat = null, html = '<h3>등록된 FAQ ('+DATA.faqs.length+')</h3>';
+  DATA.faqs.forEach(function(f){
+    if(f.cat !== lastCat){ html += '<div class="cat-label">'+SHS.escapeHtml(f.cat)+'</div>'; lastCat = f.cat; }
+    html += '<div class="item-row">'+
+      (f.home? '<span class="item-tag">홈노출</span>' : '<span class="item-tag" style="background:#f2f2f2;color:#999;">Q&amp;A</span>')+
+      '<div class="item-main"><div class="item-title">'+SHS.escapeHtml(f.q)+'</div><div class="item-sub">'+SHS.escapeHtml(f.a).slice(0,60)+(f.a.length>60?'…':'')+'</div></div>'+
+      '<div class="item-actions">'+
+        '<button class="btn btn-line btn-sm" onclick="editFaq(\''+f.id+'\')">수정</button>'+
+        '<button class="btn btn-danger btn-sm" onclick="deleteFaq(\''+f.id+'\')">삭제</button>'+
+      '</div>'+
+    '</div>';
+  });
+  el.innerHTML = html;
+}
+
+/* ==================== 팝업 ==================== */
+function toBr(s){ return SHS.escapeHtml(s).split('\n').join('<br>'); }
+function brToText(s){ return (s||'').replace(/<br\s*\/?>/gi,'\n'); }
+
+function renderPopupPanel(){
+  var p = DATA.popup;
+  var imgSrc = DATA.images['popup-greenlight.jpg'] || '../images/popup-greenlight.jpg';
+  document.getElementById('popupCard').innerHTML =
+    '<div class="toggle-row"><h3 style="margin:0;">팝업 노출</h3><label class="switch"><input type="checkbox" id="ppEnabled" '+(p.enabled?'checked':'')+' onchange="togglePopupEnabled()"><span class="slider"></span></label></div>'+
+    '<div class="field"><label>왼쪽 문구 (줄바꿈으로 여러 줄 입력 가능)</label><textarea id="ppText" style="min-height:110px;">'+brToText(p.text)+'</textarea></div>'+
+    '<div class="field"><label>오른쪽 배너 문구</label><textarea id="ppBanner" style="min-height:70px;">'+brToText(p.bannerText)+'</textarea></div>'+
+    '<div class="field"><label>버튼(CTA) 문구</label><input type="text" id="ppCta" value="'+SHS.escapeHtml(p.ctaText)+'"></div>'+
+    '<div class="field"><label>팝업 이미지</label>'+
+      '<div style="display:flex;align-items:center;gap:1rem;">'+
+        '<img src="'+imgSrc+'" style="width:110px;height:80px;object-fit:cover;border-radius:8px;background:#eee;">'+
+        '<div style="display:flex;gap:8px;flex-wrap:wrap;">'+
+          '<button class="btn btn-line btn-sm file-btn">이미지 선택<input type="file" accept="image/*" onchange="uploadPopupImage(this)"></button>'+
+          (DATA.images['popup-greenlight.jpg'] ? '<button class="btn btn-danger btn-sm" onclick="restoreImage(\'popup-greenlight.jpg\')">원본 이미지로 복원</button>' : '')+
+        '</div>'+
+      '</div>'+
+    '</div>'+
+    '<button class="btn btn-primary" onclick="savePopup()">저장하기</button>';
+}
+
+function togglePopupEnabled(){ /* 저장 버튼에서 반영, 여기서는 UI만 유지 */ }
+
+function savePopup(){
+  DATA.popup.enabled = document.getElementById('ppEnabled').checked;
+  DATA.popup.text = toBr(document.getElementById('ppText').value.trim());
+  DATA.popup.bannerText = toBr(document.getElementById('ppBanner').value.trim());
+  DATA.popup.ctaText = document.getElementById('ppCta').value.trim();
+  if(!persist()) return;
+  toast('팝업 설정이 저장되었습니다.');
+}
+
+function uploadPopupImage(input){
+  var file = input.files[0];
+  if(!file) return;
+  SHS.compressImageFile(file, {maxWidth:1000, quality:0.8}, function(err, dataUrl){
+    if(err){ alert(err.message); return; }
+    DATA.images['popup-greenlight.jpg'] = dataUrl;
+    if(!persist()) return;
+    renderPopupPanel();
+    renderImagePanel();
+    toast('팝업 이미지가 변경되었습니다.');
+  });
+}
+
+/* ==================== 이미지 ==================== */
+function fmtBytes(n){
+  if(n < 1024) return n + 'B';
+  if(n < 1024*1024) return (n/1024).toFixed(0) + 'KB';
+  return (n/1024/1024).toFixed(1) + 'MB';
+}
+
+function storageUsage(){
+  var raw = localStorage.getItem(SHS.STORAGE_KEY) || '';
+  return raw.length; // 대략 문자 수 ≈ byte 수(ASCII 기준 근사치)
+}
+
+function renderStorageCard(){
+  var used = storageUsage();
+  var pct = Math.min(100, Math.round(used / (5*1024*1024) * 100));
+  document.getElementById('storageCard').innerHTML =
+    '<h3>저장 용량</h3>'+
+    '<div class="storage-bar"><div class="storage-fill" style="width:'+pct+'%;"></div></div>'+
+    '<div class="storage-txt">현재 약 '+fmtBytes(used)+' 사용 중 (브라우저 저장공간은 보통 5~10MB로 제한됩니다. 이미지가 많아질수록 자동으로 압축되지만, 너무 많은 이미지를 올리면 저장이 실패할 수 있습니다.)</div>';
+}
+
+function renderImagePanel(){
+  renderStorageCard();
+  var grid = document.getElementById('imageGrid');
+  grid.innerHTML = SHS.IMAGE_DEFS.map(function(def){
+    var override = DATA.images[def.key];
+    var src = override || ('../' + def.path);
+    return '<div class="img-card">'+
+      '<div class="thumb-wrap">'+
+        (override ? '<span class="badge">교체됨</span>' : '')+
+        '<img class="thumb" src="'+src+'">'+
+      '</div>'+
+      '<div class="img-card-body">'+
+        '<div class="img-card-label">'+SHS.escapeHtml(def.label)+'</div>'+
+        '<div class="img-card-actions">'+
+          '<button class="btn btn-line btn-sm file-btn">이미지 교체<input type="file" accept="image/*" onchange="uploadImage(\''+def.key+'\', this)"></button>'+
+          (override ? '<button class="btn btn-danger btn-sm" onclick="restoreImage(\''+def.key+'\')">원본 복원</button>' : '')+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+
+function uploadImage(key, input){
+  var file = input.files[0];
+  if(!file) return;
+  var maxWidth = (key==='hero-bg.jpg' || key==='section-network.jpg') ? 1920 : (key==='logo.png' ? 500 : 1400);
+  SHS.compressImageFile(file, {maxWidth:maxWidth, quality:0.8}, function(err, dataUrl){
+    if(err){ alert(err.message); return; }
+    DATA.images[key] = dataUrl;
+    if(!persist()) return;
+    renderImagePanel();
+    if(key==='popup-greenlight.jpg') renderPopupPanel();
+    toast('이미지가 교체되었습니다.');
+  });
+}
+
+function restoreImage(key){
+  if(!confirm('원본 이미지로 되돌리시겠습니까?')) return;
+  delete DATA.images[key];
+  if(!persist()) return;
+  renderImagePanel();
+  if(key==='popup-greenlight.jpg') renderPopupPanel();
+  toast('원본 이미지로 복원되었습니다.');
+}
+
+/* ==================== 연락처 ==================== */
+function renderContactPanel(){
+  var c = DATA.contact;
+  document.getElementById('contactCard').innerHTML =
+    '<div class="field-row">'+
+      '<div class="field"><label>대표 상담번호 (수신자부담)</label><input type="text" id="cfMain" value="'+SHS.escapeHtml(c.mainPhone)+'"></div>'+
+      '<div class="field"><label>담당자 직통번호 (실제 연결)</label><input type="text" id="cfDirect" value="'+SHS.escapeHtml(c.directPhone)+'"></div>'+
+    '</div>'+
+    '<div class="field-row">'+
+      '<div class="field"><label>고객센터 대표번호</label><input type="text" id="cfCs" value="'+SHS.escapeHtml(c.csPhone)+'"></div>'+
+      '<div class="field"><label>운영시간</label><input type="text" id="cfHours" value="'+SHS.escapeHtml(c.hoursCompact||c.hoursSpaced||'')+'"></div>'+
+    '</div>'+
+    '<div class="field-row">'+
+      '<div class="field"><label>고객센터 팩스</label><input type="text" id="cfFax" value="'+SHS.escapeHtml(c.fax)+'"></div>'+
+      '<div class="field"><label>서류 팩스</label><input type="text" id="cfDocFax" value="'+SHS.escapeHtml(c.docFax)+'"></div>'+
+    '</div>'+
+    '<div class="field"><label>이메일</label><input type="text" id="cfEmail" value="'+SHS.escapeHtml(c.email)+'"></div>'+
+    '<div class="field"><label>주소</label><input type="text" id="cfAddress" value="'+SHS.escapeHtml(c.address)+'"></div>'+
+    '<div style="font-size:12px;color:#aaa;margin:-0.4rem 0 1rem;">※ 담당자 직통번호는 "전화 걸기" 버튼이 실제로 연결하는 번호입니다. 대표 상담번호는 화면에 표시되는 문구입니다.</div>'+
+    '<button class="btn btn-primary" onclick="saveContact()">저장하기</button>';
+}
+
+function saveContact(){
+  DATA.contact.mainPhone = document.getElementById('cfMain').value.trim();
+  DATA.contact.directPhone = document.getElementById('cfDirect').value.trim();
+  DATA.contact.csPhone = document.getElementById('cfCs').value.trim();
+  DATA.contact.fax = document.getElementById('cfFax').value.trim();
+  DATA.contact.docFax = document.getElementById('cfDocFax').value.trim();
+  DATA.contact.email = document.getElementById('cfEmail').value.trim();
+  DATA.contact.address = document.getElementById('cfAddress').value.trim();
+  var hours = document.getElementById('cfHours').value.trim();
+  DATA.contact.hoursCompact = hours;
+  DATA.contact.hoursSpaced = hours;
+  if(!persist()) return;
+  toast('연락처 정보가 저장되었습니다.');
+}
+
+/* ==================== 설정 ==================== */
+function renderSettingsPanel(){
+  document.getElementById('passwordCard').innerHTML =
+    '<h3>비밀번호 변경</h3>'+
+    '<div class="field"><label>현재 비밀번호</label><input type="password" id="pwCurrent"></div>'+
+    '<div class="field"><label>새 비밀번호</label><input type="password" id="pwNew"></div>'+
+    '<div class="field"><label>새 비밀번호 확인</label><input type="password" id="pwConfirm"></div>'+
+    '<button class="btn btn-primary" onclick="changePassword()">비밀번호 변경</button>';
+  document.getElementById('resetCard').innerHTML =
+    '<h3>전체 데이터 초기화</h3>'+
+    '<p style="font-size:13px;color:#888;margin-bottom:1rem;">공지사항, FAQ, 팝업, 이미지, 연락처를 모두 기본값으로 되돌립니다. 이 작업은 되돌릴 수 없습니다.</p>'+
+    '<button class="btn btn-danger" onclick="resetEverything()">기본값으로 초기화</button>';
+}
+
+function changePassword(){
+  var cur = document.getElementById('pwCurrent').value;
+  var nw = document.getElementById('pwNew').value;
+  var cf = document.getElementById('pwConfirm').value;
+  if(!SHS.checkPassword(cur, DATA)){ alert('현재 비밀번호가 올바르지 않습니다.'); return; }
+  if(!nw || nw.length < 2){ alert('새 비밀번호를 입력해 주세요.'); return; }
+  if(nw !== cf){ alert('새 비밀번호가 일치하지 않습니다.'); return; }
+  DATA.settings.password = nw;
+  if(!persist()) return;
+  document.getElementById('pwCurrent').value='';
+  document.getElementById('pwNew').value='';
+  document.getElementById('pwConfirm').value='';
+  toast('비밀번호가 변경되었습니다.');
+}
+
+function resetEverything(){
+  if(!confirm('정말 모든 내용을 기본값으로 초기화하시겠습니까?')) return;
+  if(!confirm('한 번 더 확인합니다. 되돌릴 수 없습니다. 초기화할까요?')) return;
+  DATA = SHS.resetAll();
+  renderNoticeForm(); renderNoticeList();
+  renderFaqForm(); renderFaqList();
+  renderPopupPanel();
+  renderImagePanel();
+  renderContactPanel();
+  toast('초기화되었습니다.');
+}
+</script>
+</body>
+</html>

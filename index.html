@@ -1,0 +1,719 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>새한신용정보주식회사 일산지사 | 채권추심 전문</title>
+<meta name="description" content="새한신용정보주식회사 일산지사 — 1968년 창사 58년, 합법 채권추심 전문. 일산지사 직접 상담 무료 1800-5549">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans KR',sans-serif;background:#fff;color:#1e2028;line-height:1.6;overflow-x:hidden;}
+
+/* ── POPUP ── */
+#popup{
+  position:fixed;top:80px;left:50%;transform:translateX(-50%);
+  z-index:1000;width:520px;max-width:92vw;
+  border-radius:18px;overflow:hidden;
+  box-shadow:0 24px 80px rgba(0,0,0,0.55);
+  border:1px solid rgba(255,255,255,0.08);
+}
+.popup-drag-handle{
+  background:#1a3c6e;padding:10px 16px;
+  display:flex;align-items:center;justify-content:space-between;
+  cursor:move;user-select:none;
+}
+.popup-drag-label{font-size:11px;color:rgba(255,255,255,0.6);display:flex;align-items:center;gap:6px;}
+.popup-drag-dots{display:flex;gap:3px;}
+.popup-drag-dots span{width:6px;height:6px;background:rgba(255,255,255,0.4);border-radius:50%;display:block;}
+.popup-body{display:grid;grid-template-columns:1fr 1fr;}
+.popup-left{background:#fff;padding:2.2rem 1.8rem;display:flex;flex-direction:column;justify-content:space-between;}
+.popup-quote{font-size:36px;color:#1a3c6e;line-height:1;}
+.popup-text{font-size:15px;font-weight:700;color:#1a1a2e;line-height:1.8;flex:1;padding:0.6rem 0;}
+.popup-right{background:linear-gradient(135deg,#0a0a0a,#0d2e1e,#003d25);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;min-height:200px;}
+.neon-line{position:absolute;width:200%;height:5px;background:linear-gradient(90deg,transparent,#00ffb3,#00e5a0,transparent);border-radius:4px;transform:rotate(-35deg);box-shadow:0 0 30px #00e5a0;}
+.neon-line2{position:absolute;width:200%;height:3px;background:linear-gradient(90deg,transparent,#00c896,transparent);border-radius:4px;transform:rotate(-35deg) translateY(-40px);opacity:0.4;}
+.popup-right-label{font-size:13px;color:rgba(255,255,255,0.7);text-align:center;z-index:2;line-height:1.8;font-weight:600;}
+.popup-bottom{background:#f4f6fb;padding:0.9rem 1.2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid #e0e4f0;}
+.popup-cta{background:#e8400c;color:#fff;font-size:13px;font-weight:700;font-family:'Noto Sans KR',sans-serif;padding:9px 18px;border-radius:50px;border:none;cursor:pointer;}
+.popup-close-row{display:flex;align-items:center;gap:1rem;}
+.popup-today{font-size:11px;color:#888;cursor:pointer;}
+.popup-close-btn{font-size:11px;color:#888;cursor:pointer;background:none;border:none;font-family:'Noto Sans KR',sans-serif;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;background:#ffffff;border-bottom:1px solid #f0f0f0;z-index:500;transition:background 0.3s;}
+nav.scrolled{background:#ffffff;}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 2.4rem;height:68px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{display:flex;align-items:center;text-decoration:none;flex-shrink:0;}
+.nav-links{display:flex;gap:0;list-style:none;margin-left:2rem;}
+.nav-links>li{position:relative;}
+.nav-links>li>a{font-size:14px;color:#333;text-decoration:none;font-weight:500;padding:0.5rem 1rem;display:block;border-radius:8px;transition:all 0.15s;white-space:nowrap;}
+.nav-links>li>a:hover,.nav-links>li>a.active{color:#e8400c;}
+.dropdown{position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#fff;border:1px solid #eee;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,0.1);min-width:150px;padding:0.5rem 0;display:none;z-index:600;}
+.nav-links>li:hover .dropdown{display:block;}
+.dropdown a{display:block;padding:0.6rem 1.2rem;font-size:13px;color:#555;text-decoration:none;transition:all 0.12s;}
+.dropdown a:hover{color:#e8400c;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.nav-call-btn{background:#e8400c;color:#fff;font-size:13px;font-weight:700;font-family:'Noto Sans KR',sans-serif;padding:10px 22px;border-radius:24px;border:none;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.nav-call-btn:hover{background:#c73208;transform:translateY(-1px);}
+.nav-sub-btn{background:#f5f5f5;color:#333;font-size:13px;font-weight:500;font-family:'Noto Sans KR',sans-serif;padding:10px 18px;border-radius:24px;border:none;cursor:pointer;white-space:nowrap;}
+.nav-sub-btn:hover{background:#ebebeb;}
+
+/* ── HERO ── */
+.hero{height:100vh;min-height:700px;position:relative;overflow:hidden;display:flex;align-items:center;}
+.hero-bg{position:absolute;inset:0;background-image:url('images/hero-bg.jpg');background-size:cover;background-position:center;transform:scale(1.08);transition:transform 8s ease-out;}
+.hero-bg.loaded{transform:scale(1);}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(120deg,rgba(0,0,0,0.82) 45%,rgba(0,0,0,0.3) 100%);}
+.hero-content{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:0 2.4rem;width:100%;}
+.hero-eyebrow{font-size:12px;font-weight:700;color:#e8400c;letter-spacing:4px;margin-bottom:2rem;opacity:0;transform:translateY(20px);animation:fadeUp 0.7s 0.3s forwards;}
+.hero-title{font-size:80px;font-weight:900;color:#fff;line-height:1.05;letter-spacing:-3px;margin-bottom:2rem;opacity:0;transform:translateY(30px);animation:fadeUp 0.8s 0.5s forwards;}
+.hero-title .line2{display:block;color:#e8400c;}
+.hero-title .line3{display:block;font-size:56px;color:rgba(255,255,255,0.85);letter-spacing:-2px;margin-top:0.2rem;}
+.hero-desc{font-size:18px;color:rgba(255,255,255,0.65);line-height:1.9;margin-bottom:3rem;max-width:520px;opacity:0;transform:translateY(20px);animation:fadeUp 0.8s 0.8s forwards;}
+.hero-desc strong{color:rgba(255,255,255,0.9);}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;opacity:0;transform:translateY(20px);animation:fadeUp 0.8s 1s forwards;}
+.btn-hero-main{background:#e8400c;color:#fff;font-size:17px;font-weight:700;font-family:'Noto Sans KR',sans-serif;padding:19px 38px;border-radius:50px;border:none;cursor:pointer;transition:all 0.25s;white-space:nowrap;}
+.btn-hero-main:hover{background:#c73208;transform:translateY(-2px);box-shadow:0 12px 32px rgba(232,64,12,0.4);}
+.btn-hero-sub{background:rgba(255,255,255,0.1);color:#fff;font-size:16px;font-weight:500;font-family:'Noto Sans KR',sans-serif;padding:19px 34px;border-radius:50px;border:1.5px solid rgba(255,255,255,0.25);cursor:pointer;transition:all 0.25s;white-space:nowrap;backdrop-filter:blur(8px);}
+.btn-hero-sub:hover{background:rgba(255,255,255,0.18);}
+.hero-scroll-hint{position:absolute;bottom:2.4rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.3);font-size:10px;letter-spacing:2px;z-index:2;animation:bounce 2s infinite;}
+.hero-scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,0.4),transparent);}
+
+/* ── STATS ── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);background:#1e2028;}
+.stat-item{padding:3rem 2rem;text-align:center;border-right:1px solid #1e1e1e;position:relative;overflow:hidden;cursor:default;}
+.stat-item::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:#e8400c;transform:scaleX(0);transition:transform 0.3s;}
+.stat-item:hover::after{transform:scaleX(1);}
+.stat-item:last-child{border-right:none;}
+.stat-val{font-size:44px;font-weight:900;color:#fff;letter-spacing:-2px;line-height:1;}
+.stat-val em{font-size:22px;color:#e8400c;font-style:normal;}
+.stat-label{font-size:13px;color:#555;margin-top:10px;letter-spacing:0.5px;}
+
+/* ── REVEAL 애니메이션 ── */
+.reveal{opacity:0;transform:translateY(50px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-60px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1);}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(60px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1);}
+.reveal-right.visible{opacity:1;transform:translateX(0);}
+.delay-1{transition-delay:0.1s;}
+.delay-2{transition-delay:0.2s;}
+.delay-3{transition-delay:0.3s;}
+.delay-4{transition-delay:0.4s;}
+
+/* ── SECTION 공통 ── */
+.section{padding:120px 2.4rem;}
+.sec-inner{max-width:1280px;margin:0 auto;}
+.sec-eyebrow{font-size:12px;font-weight:700;color:#e8400c;letter-spacing:4px;margin-bottom:1.4rem;display:block;}
+.sec-title{font-size:56px;font-weight:900;color:#1e2028;letter-spacing:-2.5px;line-height:1.1;margin-bottom:1.4rem;}
+.sec-title-white{color:#fff;}
+.sec-desc{font-size:18px;color:#888;line-height:1.9;max-width:560px;}
+.sec-desc-dark{color:#555;}
+
+/* ── FEATURE 섹션 (이미지+텍스트 2단) ── */
+.feature-section{padding:0;}
+.feature-block{display:grid;grid-template-columns:1fr 1fr;}
+.feature-block.reverse{direction:rtl;}
+.feature-block.reverse>*{direction:ltr;}
+.feature-img{position:relative;overflow:hidden;aspect-ratio:4/3;}
+.feature-img img{width:130%;height:130%;object-fit:cover;object-position:center;display:block;animation:kenburns 10s ease-in-out infinite alternate;}
+.feature-img.alt img{animation-name:kenburns-alt;}
+.feature-img-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.2);}
+
+@keyframes kenburns{
+  0%  {transform:translate(-10%, -10%) scale(1);}
+  100%{transform:translate(10%,  10%) scale(1.08);}
+}
+@keyframes kenburns-alt{
+  0%  {transform:translate(10%, -10%) scale(1.08);}
+  100%{transform:translate(-10%,  10%) scale(1);}
+}
+.feature-copy{padding:80px 64px;display:flex;flex-direction:column;justify-content:center;background:#fff;}
+.feature-block:nth-child(even) .feature-copy{background:#fafafa;}
+.feature-copy .sec-eyebrow{margin-bottom:1rem;}
+.feature-copy .big-title{font-size:48px;font-weight:900;color:#1e2028;letter-spacing:-2px;line-height:1.1;margin-bottom:1.4rem;}
+.feature-copy p{font-size:17px;color:#777;line-height:1.9;margin-bottom:2rem;}
+.feature-copy .feature-points{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:2.4rem;}
+.feature-copy .feature-points li{font-size:15px;color:#555;display:flex;align-items:center;gap:10px;}
+.feature-copy .feature-points li::before{content:'';width:6px;height:6px;background:#e8400c;border-radius:50%;flex-shrink:0;}
+.btn-dark{display:inline-block;background:#1e2028;color:#fff;font-size:15px;font-weight:700;font-family:'Noto Sans KR',sans-serif;padding:16px 32px;border-radius:50px;border:none;cursor:pointer;transition:all 0.2s;text-decoration:none;}
+.btn-dark:hover{background:#333;transform:translateY(-1px);}
+.btn-red{display:inline-block;background:#e8400c;color:#fff;font-size:15px;font-weight:700;font-family:'Noto Sans KR',sans-serif;padding:16px 32px;border-radius:50px;border:none;cursor:pointer;transition:all 0.2s;text-decoration:none;}
+.btn-red:hover{background:#c73208;transform:translateY(-1px);}
+
+/* ── 서비스 그리드 ── */
+.service-section{background:#f5f5f5;}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:4rem;}
+.svc-card{border-radius:24px;padding:2.8rem 2.4rem;background:#fff;border:1.5px solid transparent;transition:all 0.3s;cursor:pointer;position:relative;overflow:hidden;}
+.svc-card:hover{border-color:#e8400c;transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.1);}
+.svc-card.featured{background:#1e2028;border-color:#1e2028;}
+.svc-card.featured:hover{box-shadow:0 20px 50px rgba(0,0,0,0.35);}
+.svc-num{font-size:64px;font-weight:900;color:#f0f0f0;line-height:1;margin-bottom:1rem;letter-spacing:-3px;}
+.svc-card.featured .svc-num{color:#1e1e1e;}
+.svc-title{font-size:24px;font-weight:900;color:#1e2028;letter-spacing:-0.8px;margin-bottom:0.8rem;}
+.svc-card.featured .svc-title{color:#fff;}
+.svc-desc{font-size:15px;color:#888;line-height:1.8;}
+.svc-card.featured .svc-desc{color:#666;}
+.svc-arrow{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:#e8400c;margin-top:2rem;}
+.svc-card.featured .svc-arrow{color:#00ffb3;}
+
+/* ── 공지 ── */
+.notice-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:3.5rem;}
+.notice-card{background:#f7f7f7;border-radius:20px;padding:2rem;border:1.5px solid transparent;cursor:pointer;transition:all 0.25s;}
+.notice-card:hover{background:#fff;border-color:#ddd;transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,0.07);}
+.nc-tag{display:inline-block;font-size:11px;font-weight:700;color:#e8400c;background:#fff0ec;padding:4px 12px;border-radius:20px;margin-bottom:1rem;}
+.nc-title{font-size:17px;font-weight:700;color:#1e2028;margin-bottom:8px;line-height:1.5;}
+.nc-date{font-size:12px;color:#bbb;}
+.notice-more{display:inline-flex;align-items:center;gap:8px;margin-top:2.4rem;font-size:15px;font-weight:700;color:#1e2028;text-decoration:none;border-bottom:2px solid #1e2028;padding-bottom:3px;transition:gap 0.2s;}
+.notice-more:hover{gap:14px;}
+
+/* ── FAQ ── */
+.faq-wrap{margin-top:3.5rem;max-width:800px;}
+.faq-item{border-top:1px solid rgba(255,255,255,0.08);}
+.faq-item:last-child{border-bottom:1px solid rgba(255,255,255,0.08);}
+.faq-q{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.6rem 0;cursor:pointer;}
+.faq-q-txt{font-size:18px;font-weight:500;color:#fff;line-height:1.4;}
+.faq-toggle{font-size:26px;color:#e8400c;transition:transform 0.25s;flex-shrink:0;line-height:1;}
+.faq-a{font-size:15px;color:#777;line-height:1.9;padding-bottom:1.6rem;display:none;}
+.faq-item.open .faq-a{display:block;}
+.faq-item.open .faq-toggle{transform:rotate(45deg);}
+
+/* ── CHAT ── */
+.chat-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:4rem;}
+.chat-copy .big-title{font-size:48px;font-weight:900;color:#1e2028;letter-spacing:-2px;line-height:1.15;margin-bottom:1.2rem;}
+.chat-copy p{font-size:17px;color:#888;line-height:1.9;margin-bottom:2rem;}
+.chat-hours{font-size:14px;color:#aaa;display:flex;align-items:center;gap:8px;margin-bottom:2rem;}
+.chat-hours::before{content:'';width:8px;height:8px;background:#22c55e;border-radius:50%;display:inline-block;flex-shrink:0;}
+.chat-widget{background:#f5f5f5;border-radius:24px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.08);}
+.cw-header{background:#1e2028;padding:1.4rem 1.8rem;display:flex;align-items:center;gap:14px;}
+.cw-av{width:44px;height:44px;background:#e8400c;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;flex-shrink:0;}
+.cw-name{font-size:14px;font-weight:700;color:#fff;}
+.cw-status{font-size:12px;color:#22c55e;margin-top:2px;}
+.cw-msgs{padding:1.6rem;display:flex;flex-direction:column;gap:12px;min-height:220px;max-height:260px;overflow-y:auto;}
+.cw-msg{max-width:80%;padding:12px 16px;border-radius:16px;font-size:14px;line-height:1.65;}
+.cw-msg.bot{background:#fff;color:#1e2028;border-radius:4px 16px 16px 16px;align-self:flex-start;border:1px solid #e8e8e8;}
+.cw-msg.user{background:#1e2028;color:#fff;border-radius:16px 4px 16px 16px;align-self:flex-end;}
+.cw-input-row{padding:1.2rem 1.4rem;border-top:1px solid #ebebeb;display:flex;gap:8px;background:#fff;}
+.cw-input{flex:1;padding:12px 18px;border:1.5px solid #e0e0e0;border-radius:50px;font-size:14px;font-family:'Noto Sans KR',sans-serif;outline:none;}
+.cw-input:focus{border-color:#1e2028;}
+.cw-send{background:#e8400c;color:#fff;border:none;border-radius:50px;padding:12px 20px;font-size:14px;font-weight:700;font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:background 0.2s;}
+.cw-send:hover{background:#c73208;}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3.5rem;}
+.cc-card{border-radius:24px;padding:2.4rem 2rem;border:1.5px solid #f0f0f0;transition:all 0.25s;text-align:center;cursor:pointer;}
+.cc-card:hover{border-color:#1e2028;transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.08);}
+.cc-card.pri{background:#1e2028;border-color:#1e2028;}
+.cc-card.pri:hover{box-shadow:0 16px 40px rgba(0,0,0,0.25);}
+.cc-ico{font-size:40px;margin-bottom:1.2rem;}
+.cc-lbl{font-size:11px;font-weight:500;color:#aaa;letter-spacing:2px;margin-bottom:8px;}
+.cc-val{font-size:24px;font-weight:900;color:#1e2028;letter-spacing:-0.5px;}
+.cc-card.pri .cc-lbl{color:#555;}
+.cc-card.pri .cc-val{color:#fff;}
+.cc-note{font-size:12px;color:#ccc;margin-top:6px;}
+.cc-card:not(.pri) .cc-note{color:#bbb;}
+
+/* ── CTA STRIP ── */
+.cta-strip{background:#e8400c;padding:6rem 2.4rem;text-align:center;position:relative;overflow:hidden;}
+.cta-strip::before{content:'';position:absolute;top:-50%;left:-20%;width:140%;height:200%;background:radial-gradient(ellipse at center,rgba(255,255,255,0.08) 0%,transparent 70%);}
+.cta-strip h2{font-size:60px;font-weight:900;color:#fff;letter-spacing:-3px;margin-bottom:1rem;position:relative;}
+.cta-strip p{font-size:18px;color:rgba(255,255,255,0.7);margin-bottom:2.8rem;position:relative;}
+.btn-white{background:#fff;color:#e8400c;font-size:20px;font-weight:900;font-family:'Noto Sans KR',sans-serif;padding:22px 56px;border-radius:50px;border:none;cursor:pointer;transition:all 0.25s;position:relative;}
+.btn-white:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,0.2);}
+
+/* ── OFFICE 섹션 ── */
+.office-section{background:#1e2028;padding:120px 2.4rem;}
+.office-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.office-img{border-radius:24px;overflow:hidden;position:relative;}
+.office-img img{width:100%;height:480px;object-fit:cover;display:block;}
+.office-copy .sec-eyebrow{color:#e8400c;}
+.office-copy .big-title{font-size:48px;font-weight:900;color:#fff;letter-spacing:-2px;line-height:1.15;margin-bottom:1.4rem;}
+.office-copy p{font-size:17px;color:#666;line-height:1.9;margin-bottom:2rem;}
+.office-info{display:flex;flex-direction:column;gap:12px;margin-bottom:2.4rem;}
+.office-info-row{display:flex;gap:12px;font-size:14px;color:#555;}
+.office-info-label{color:#444;font-weight:500;flex-shrink:0;width:56px;}
+.office-info-val{color:#888;}
+
+/* ── QUICK MENU ── */
+.quick-menu{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:400;display:flex;flex-direction:column;gap:8px;}
+.quick-btn{width:52px;height:52px;border-radius:50%;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;box-shadow:0 4px 18px rgba(0,0,0,0.18);transition:all 0.2s;font-family:'Noto Sans KR',sans-serif;}
+.quick-btn:hover{transform:scale(1.12);}
+.q-icon{font-size:16px;line-height:1;}
+.q-label{font-size:7px;font-weight:700;line-height:1;}
+.qb-call{background:#e8400c;color:#fff;}
+.qb-direct{background:#1e2028;color:#fff;}
+.qb-chat{background:#2563eb;color:#fff;}
+.qb-fax{background:#444;color:#fff;}
+.qb-top{background:#f0f0f0;color:#1e2028;}
+
+/* ── FOOTER ── */
+footer{background:#0a0a0a;padding:4rem 2.4rem 2.4rem;}
+.footer-inner{max-width:1280px;margin:0 auto;}
+.footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:2rem;padding-bottom:2.4rem;border-bottom:1px solid #1a1a1a;align-items:flex-start;}
+.footer-brand{font-size:15px;font-weight:700;color:#fff;margin-bottom:12px;}
+.footer-brand span{color:#e8400c;}
+.footer-info{font-size:12px;color:#999;line-height:2.2;}
+.footer-info strong{color:#bbb;}
+.footer-copy{font-size:12px;color:#444;margin-top:1.8rem;}
+.footer-orgs{width:100%;padding-top:1.4rem;margin-top:1.4rem;border-top:1px solid #2a2a2a;}
+.footer-orgs-title{font-size:11px;font-weight:600;color:#555;letter-spacing:1.5px;margin-bottom:0.8rem;}
+.footer-org-list{display:grid;grid-template-columns:repeat(4,1fr);gap:0.6rem;}
+.footer-org-link{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 8px;background:#1a1a1a;border:1px solid #2e2e2e;border-radius:8px;text-decoration:none;transition:all 0.2s;overflow:hidden;}
+.footer-org-link:hover{background:#222;border-color:#555;}
+.footer-org-link img{width:auto;height:18px;max-width:60px;max-height:18px;object-fit:contain;display:block;flex-shrink:0;}
+.footer-org-link span{font-size:11px;color:#666;font-weight:500;white-space:nowrap;}
+.footer-org-link:hover span{color:#999;}
+
+/* ── KEYFRAMES ── */
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-8px);}}
+@keyframes neonFlow{0%{opacity:0.6;}50%{opacity:1;}100%{opacity:0.6;}}
+@keyframes neonMove{0%{transform:rotate(-35deg) translateX(-5%);}100%{transform:rotate(-35deg) translateX(5%);}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .hero-title{font-size:56px;}
+  .sec-title{font-size:42px;}
+  .feature-block{grid-template-columns:1fr;}
+  .feature-block.reverse{direction:ltr;}
+  .feature-img{aspect-ratio:16/9;}
+  .feature-copy{padding:56px 40px;}
+  .feature-copy .big-title{font-size:36px;}
+  .office-inner{grid-template-columns:1fr;}
+  .office-img img{height:320px;}
+}
+@media(max-width:768px){
+  .hero-title{font-size:38px;letter-spacing:-1.5px;}
+  .hero-title .line3{font-size:28px;}
+  .hero-desc{font-size:15px;}
+  .stats{grid-template-columns:repeat(2,1fr);}
+  .stat-val{font-size:34px;}
+  .service-grid,.notice-grid,.contact-grid{grid-template-columns:1fr;}
+  .chat-wrap{grid-template-columns:1fr;}
+  .sec-title{font-size:32px;letter-spacing:-1.5px;}
+  .cta-strip h2{font-size:36px;letter-spacing:-2px;}
+  .feature-img{aspect-ratio:3/2;}
+  .feature-copy{padding:44px 28px;}
+  .feature-copy .big-title{font-size:30px;}
+  .nav-links{display:none;}
+  .quick-menu{right:8px;}
+  .office-img img{height:260px;}
+  .chat-copy .big-title{font-size:34px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ POPUP ══ -->
+<div id="popup">
+  <div class="popup-drag-handle" id="popupHandle">
+    <div class="popup-drag-label">
+      <div class="popup-drag-dots"><span></span><span></span><span></span></div>
+      드래그하여 이동
+    </div>
+    <button class="popup-close-btn" onclick="closePopup()">✕ 닫기</button>
+  </div>
+  <div class="popup-body">
+    <div class="popup-left">
+      <div class="popup-quote">"</div>
+      <div class="popup-text">내 사업은 항상<br>그린라이트 일까요?<br>신호가 바뀌는 것은<br>한순간 입니다.<br>매출채권이 있다면<br>미리 미리 대비하세요.</div>
+      <div class="popup-quote" style="text-align:right;">"</div>
+    </div>
+    <div class="popup-right" style="position:relative;overflow:hidden;min-height:200px;">
+      <img src="images/popup-greenlight.jpg" alt="그린라이트" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+      <div style="position:absolute;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:flex-end;justify-content:center;padding-bottom:1.4rem;">
+        <div id="popupBannerText" style="font-size:13px;color:rgba(255,255,255,0.85);text-align:center;line-height:1.9;font-weight:500;">매출채권 관리<br>지금 시작하세요<br>📞 1800-5549</div>
+      </div>
+    </div>
+  </div>
+  <div class="popup-bottom">
+    <button class="popup-cta" onclick="window.open('tel:010-8266-5779')">📞 1800-5549 무료 상담</button>
+    <div class="popup-close-row">
+      <span class="popup-today" onclick="closeToday()">오늘 하루 보지 않기</span>
+      <button class="popup-close-btn" onclick="closePopup()">✕ 닫기</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ QUICK MENU ══ -->
+<div class="quick-menu">
+  <button class="quick-btn qb-call" onclick="window.open('tel:010-8266-5779')"><span class="q-icon">📞</span><span class="q-label">무료상담</span></button>
+  <button class="quick-btn qb-direct" onclick="window.open('tel:010-8266-5779')"><span class="q-icon">📱</span><span class="q-label">직통</span></button>
+  <button class="quick-btn qb-chat" onclick="document.getElementById('chat-section').scrollIntoView({behavior:'smooth'})"><span class="q-icon">💬</span><span class="q-label">채팅</span></button>
+  <button class="quick-btn qb-fax" onclick="alert('서류팩스: 0504-081-5779\n고객센터팩스: 031-994-7470')"><span class="q-icon">📠</span><span class="q-label">팩스</span></button>
+  <button class="quick-btn qb-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><span class="q-icon">↑</span><span class="q-label">TOP</span></button>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="images/logo.png" alt="새한신용정보주식회사" style="height:auto;max-height:52px;width:auto;max-width:200px;object-fit:contain;display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">홈</a></li>
+      <li><a href="pages/collection.html">사업안내 ▾</a><div class="dropdown"><a href="pages/collection.html">채권추심</a><a href="pages/credit.html">재산·신용조사</a></div></li>
+      <li><a href="pages/about.html">회사소개 ▾</a><div class="dropdown"><a href="pages/about.html">대표이사 인사말</a><a href="pages/about.html#history">회사연혁</a><a href="pages/about.html#vision">VISION</a><a href="pages/about.html#map">오시는길</a></div></li>
+      <li><a href="pages/notice.html">공지사항</a></li>
+      <li><a href="pages/faq.html">FAQ</a></li>
+      <li><a href="pages/chat.html">채팅상담</a></li>
+      <li><a href="pages/contact.html">연락처</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-sub-btn" onclick="window.open('tel:010-8266-5779')">일산지사 직통</button>
+      <button class="nav-call-btn" onclick="window.open('tel:010-8266-5779')">📞 1800-5549</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<div class="hero" id="home">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">SAEHANSHINUONG · ILSAN BRANCH · EST. 1968</span>
+    <h1 class="hero-title">
+      미수금이<br>
+      <span class="line2">사업의 발목을</span>
+      <span class="line3">잡고 있나요?</span>
+    </h1>
+    <p class="hero-desc">
+      <strong>새한신용정보</strong>에서 직접 채권을 회수합니다.<br>
+      일산지사가 고객 곁에서 함께합니다.<br>
+      상담 무료 · 성공보수제 · 수신자 부담
+    </p>
+    <div class="hero-btns">
+      <button class="btn-hero-main" onclick="window.open('tel:010-8266-5779')">📞 1800-5549 무료상담</button>
+      <button class="btn-hero-sub" onclick="document.getElementById('chat-section').scrollIntoView({behavior:'smooth'})">💬 채팅으로 문의</button>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <div class="hero-scroll-line"></div>
+    SCROLL
+  </div>
+</div>
+
+<!-- ══ STATS ══ -->
+<div class="stats">
+  <div class="stat-item reveal delay-1"><div class="stat-val" data-target="1968">0</div><div class="stat-label">창사 연도</div></div>
+  <div class="stat-item reveal delay-2"><div class="stat-val"><span data-target="58">0</span><em>년+</em></div><div class="stat-label">채권추심 업력</div></div>
+  <div class="stat-item reveal delay-3"><div class="stat-val">전국</div><div class="stat-label">지사 네트워크</div></div>
+  <div class="stat-item reveal delay-4"><div class="stat-val">합법</div><div class="stat-label">금융위원회 등록</div></div>
+</div>
+
+<!-- ══ FEATURE 1: 채권추심 ══ -->
+<div class="feature-section">
+  <div class="feature-block">
+    <div class="feature-img reveal-left">
+      <img src="images/section-consult.jpg" alt="채권추심 상담">
+      <div class="feature-img-overlay"></div>
+    </div>
+    <div class="feature-copy reveal-right">
+      <span class="sec-eyebrow">DEBT COLLECTION</span>
+      <div class="big-title">합법적이고<br>전문적인<br>채권 회수</div>
+      <p>물품대금, 용역대금, 개인 차용금까지 — 새한신용정보 일산지사가 58년 노하우로 직접 회수합니다.</p>
+      <ul class="feature-points">
+        <li>성공보수제 — 미회수 시 비용 없음</li>
+        <li>금융위원회 등록 합법 신용정보업자</li>
+        <li>채무자 인권 보호, 법적 테두리 내 진행</li>
+        <li>전국 지사 네트워크 연계</li>
+      </ul>
+      <a class="btn-dark" href="pages/collection.html">채권추심 자세히 보기 →</a>
+    </div>
+  </div>
+
+  <!-- FEATURE 2: 재산조사 -->
+  <div class="feature-block reverse">
+    <div class="feature-img alt reveal-right">
+      <img src="images/section-docs.jpg" alt="재산·신용조사">
+      <div class="feature-img-overlay"></div>
+    </div>
+    <div class="feature-copy reveal-left">
+      <span class="sec-eyebrow">ASSET INVESTIGATION</span>
+      <div class="big-title">채무자 재산을<br>정확하게<br>파악합니다</div>
+      <p>부동산, 차량, 직장, 소재지 — 합법적인 방법으로 채무자 재산 현황을 조사하여 최적의 회수 전략을 수립합니다.</p>
+      <ul class="feature-points">
+        <li>부동산·차량·금융재산 조사</li>
+        <li>채무자 소재지·직장 확인</li>
+        <li>개인정보보호법 완전 준수</li>
+      </ul>
+      <a class="btn-dark" href="pages/credit.html">재산·신용조사 자세히 보기 →</a>
+    </div>
+  </div>
+
+  <!-- FEATURE 3: 합법성 -->
+  <div class="feature-block">
+    <div class="feature-img reveal-left">
+      <img src="images/section-legal.jpg" alt="합법 추심">
+      <div class="feature-img-overlay"></div>
+    </div>
+    <div class="feature-copy reveal-right">
+      <span class="sec-eyebrow">LEGAL & TRUSTED</span>
+      <div class="big-title">1968년부터<br>쌓아온<br>신뢰와 합법성</div>
+      <p>새한신용정보주식회사는 금융위원회 등록 합법 신용정보업자입니다. 58년간 수많은 채권을 합법적으로 회수해 왔습니다.</p>
+      <ul class="feature-points">
+        <li>금융위원회 정식 등록 신용정보업자</li>
+        <li>채권추심법 완전 준수</li>
+        <li>야간 연락·협박 등 불법 행위 절대 없음</li>
+      </ul>
+      <a class="btn-red" onclick="window.open('tel:010-8266-5779')">📞 지금 무료 상담</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 서비스 ══ -->
+<div class="section service-section">
+  <div class="sec-inner">
+    <span class="sec-eyebrow reveal">OUR SERVICE</span>
+    <div class="sec-title reveal">어떤 채권이든<br>전략적인 채권추심으로<br>실익을 최대한 확보해야 합니다.</div>
+    <div class="service-grid">
+      <div class="svc-card featured reveal delay-1" onclick="location.href='pages/collection.html'">
+        <div class="svc-num">01</div>
+        <div class="svc-title">채권추심</div>
+        <div class="svc-desc">물품대금·용역대금·차용금 등 다양한 채권을 합법적으로 회수합니다. 성공보수제.</div>
+        <div class="svc-arrow">자세히 보기 →</div>
+      </div>
+      <div class="svc-card reveal delay-2" onclick="location.href='pages/credit.html'">
+        <div class="svc-num">02</div>
+        <div class="svc-title">재산·신용조사</div>
+        <div class="svc-desc">채무자의 재산·신용 현황을 합법적으로 조사합니다. 추심 전략 수립에 필수.</div>
+        <div class="svc-arrow">자세히 보기 →</div>
+      </div>
+      <div class="svc-card reveal delay-3" onclick="location.href='pages/contact.html'">
+        <div class="svc-num">03</div>
+        <div class="svc-title">무료 상담</div>
+        <div class="svc-desc">채권 회수 가능성 무료 검토. 전화·채팅 모두 가능, 새한신용정보 일산지사에서 직접 안내.</div>
+        <div class="svc-arrow">상담 신청 →</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 전국 네트워크 이미지 섹션 ══ -->
+<div style="position:relative;height:480px;overflow:hidden;">
+  <img src="images/section-network.jpg" alt="전국 네트워크" style="width:100%;height:100%;object-fit:cover;transform:translateY(var(--parallax,0));transition:transform 0.1s linear;">
+  <div style="position:absolute;inset:0;background:rgba(0,0,0,0.65);display:flex;align-items:center;justify-content:center;text-align:center;">
+    <div class="reveal">
+      <div style="font-size:12px;font-weight:700;color:#e8400c;letter-spacing:4px;margin-bottom:1.2rem;">NATIONWIDE NETWORK</div>
+      <div style="font-size:56px;font-weight:900;color:#fff;letter-spacing:-2.5px;line-height:1.1;margin-bottom:1rem;">전국 어디서든<br>새한신용정보</div>
+      <div style="font-size:18px;color:rgba(255,255,255,0.6);">전국 지사 네트워크로 채무자 위치에 관계없이 처리합니다</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 공지 ══ -->
+<div class="section">
+  <div class="sec-inner">
+    <span class="sec-eyebrow reveal">NOTICE</span>
+    <div class="sec-title reveal">공지사항</div>
+    <div class="notice-grid" id="noticeGridHome">
+      <div class="notice-card reveal delay-1" onclick="location.href='pages/notice.html'"><div class="nc-tag">법령안내</div><div class="nc-title">채권추심대행용역 수수료의 부가가치세 면제 적용 종료 안내</div><div class="nc-date">2025.06.01</div></div>
+      <div class="notice-card reveal delay-2" onclick="location.href='pages/notice.html'"><div class="nc-tag">업무안내</div><div class="nc-title">채권 소멸시효 — 반드시 확인해야 할 기간 안내</div><div class="nc-date">2025.05.20</div></div>
+      <div class="notice-card reveal delay-3" onclick="location.href='pages/notice.html'"><div class="nc-tag">서비스</div><div class="nc-title">비대면 채팅상담 서비스 운영 시작 안내</div><div class="nc-date">2025.05.10</div></div>
+      <div class="notice-card reveal delay-4" onclick="location.href='pages/notice.html'"><div class="nc-tag">법령안내</div><div class="nc-title">개인정보 보호법 개정에 따른 채권 처리 절차 변경</div><div class="nc-date">2025.04.28</div></div>
+    </div>
+    <a href="pages/notice.html" class="notice-more">공지사항 더 보기 →</a>
+  </div>
+</div>
+
+<!-- ══ FAQ ══ -->
+<div class="section dark" style="background:#1e2028;">
+  <div class="sec-inner">
+    <span class="sec-eyebrow reveal">FAQ</span>
+    <div class="sec-title sec-title-white reveal">자주 묻는 질문</div>
+    <div class="faq-wrap" id="faqWrapHome">
+      <div class="faq-item open reveal delay-1"><div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-txt">소액도 추심이 가능한가요?</span><span class="faq-toggle">+</span></div><div class="faq-a">네, 금액에 관계없이 상담 가능합니다. 소액이라도 시간이 지날수록 소멸시효 등으로 회수가 어려워지므로 빠른 상담을 권장합니다.</div></div>
+      <div class="faq-item reveal delay-2"><div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-txt">비용은 어떻게 되나요?</span><span class="faq-toggle">+</span></div><div class="faq-a">상담은 무료이며, 추심 수수료는 회수 금액 기준 성공보수 방식입니다. 회수가 안 되면 비용이 발생하지 않습니다.</div></div>
+      <div class="faq-item reveal delay-3"><div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-txt">합법적인 추심인가요?</span><span class="faq-toggle">+</span></div><div class="faq-a">새한신용정보주식회사는 금융위원회에 등록된 합법 신용정보업자입니다. 채무자 인권을 보호하며 법적 절차 내에서만 진행합니다.</div></div>
+      <div class="faq-item reveal delay-4"><div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-txt">일산 외 지역 채무자도 추심 가능한가요?</span><span class="faq-toggle">+</span></div><div class="faq-a">전국 어디든 가능합니다. 새한신용정보 전국 지사 네트워크를 통해 채무자 위치에 관계없이 처리할 수 있습니다.</div></div>
+    </div>
+    <div style="margin-top:2.4rem;"><a href="pages/faq.html" style="color:#e8400c;font-size:15px;font-weight:700;text-decoration:none;border-bottom:2px solid #e8400c;padding-bottom:3px;">FAQ 전체 보기 →</a></div>
+  </div>
+</div>
+
+<!-- ══ 채팅 ══ -->
+<div class="section" id="chat-section">
+  <div class="sec-inner">
+    <div class="chat-wrap">
+      <div class="chat-copy reveal-left">
+        <span class="sec-eyebrow">CHAT CONSULTATION</span>
+        <div class="big-title">전화가<br>어려우세요?<br>채팅으로<br>상담하세요</div>
+        <p>간단한 질문부터 채권 내용 문의까지, 새한신용정보 일산지사에서 직접 답변합니다.</p>
+        <div class="chat-hours">평일 09:00 – 18:00 상담 가능</div>
+        <a class="btn-dark" href="pages/chat.html">채팅상담 전용 페이지 →</a>
+      </div>
+      <div class="chat-widget reveal-right">
+        <div class="cw-header">
+          <div class="cw-av">새</div>
+          <div><div class="cw-name">새한신용정보주식회사 일산지사</div><div class="cw-status">● 상담 가능</div></div>
+        </div>
+        <div class="cw-msgs" id="chatMessages">
+          <div class="cw-msg bot">안녕하세요! 새한신용정보주식회사 일산지사입니다 😊</div>
+          <div class="cw-msg bot">채권추심에 대해 궁금한 점을 편하게 말씀해 주세요.</div>
+        </div>
+        <div class="cw-input-row">
+          <input class="cw-input" id="chatInput" type="text" placeholder="문의 내용을 입력하세요..." onkeydown="if(event.key==='Enter')sendMsg()">
+          <button class="cw-send" onclick="sendMsg()">전송</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 사무실 사진 ══ -->
+<div class="office-section">
+  <div class="office-inner">
+    <div class="office-img reveal-left">
+      <img src="images/office.jpg" alt="새한신용정보 일산지사">
+    </div>
+    <div class="office-copy reveal-right">
+      <span class="sec-eyebrow">ILSAN BRANCH</span>
+      <div class="big-title">새한신용정보<br>일산지사</div>
+      <p>경기도 고양시 일산 지역을 직접 담당하는 새한신용정보 공식 일산지사입니다. 지역 밀착형 서비스로 신속하게 채권을 해결합니다.</p>
+      <div class="office-info">
+        <div class="office-info-row"><span class="office-info-label">주소</span><span class="office-info-val">경기도 고양시 일산동구 장백로 204, 203호 (보림빌딩)</span></div>
+        <div class="office-info-row"><span class="office-info-label">상담</span><span class="office-info-val">1800-5549 (수신자 부담 · 무료)</span></div>
+        <div class="office-info-row"><span class="office-info-label">직통</span><span class="office-info-val">010-8266-5779</span></div>
+        <div class="office-info-row"><span class="office-info-label">운영</span><span class="office-info-val">평일 09:00 – 18:00</span></div>
+      </div>
+      <button class="btn-red" onclick="window.open('tel:010-8266-5779')">📞 지금 바로 전화</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 연락처 ══ -->
+<div class="section" style="background:#fafafa;">
+  <div class="sec-inner">
+    <span class="sec-eyebrow reveal">CONTACT</span>
+    <div class="sec-title reveal">연락처</div>
+    <p class="sec-desc reveal">새한신용정보 일산지사에서 직접 받습니다.</p>
+    <div class="contact-grid">
+      <div class="cc-card pri reveal delay-1" onclick="window.open('tel:010-8266-5779')"><div class="cc-ico">📞</div><div class="cc-lbl">상담신청 · 수신자 부담</div><div class="cc-val">1800-5549</div><div class="cc-note">통화료 무료</div></div>
+      <div class="cc-card reveal delay-2" onclick="window.open('tel:010-8266-5779')"><div class="cc-ico">📱</div><div class="cc-lbl">일산지사 직통</div><div class="cc-val">010-8266-5779</div><div class="cc-note">직접 연결</div></div>
+      <div class="cc-card reveal delay-3" onclick="window.open('tel:031-994-7299')"><div class="cc-ico">🏢</div><div class="cc-lbl">고객센터 대표</div><div class="cc-val">031-994-7299</div><div class="cc-note">평일 09:00–18:00</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CTA ══ -->
+<div class="cta-strip">
+  <h2 class="reveal">지금 바로 전화하세요</h2>
+  <p class="reveal">상담 무료 · 수신자 부담 · 새한신용정보 일산지사 직접 연결</p>
+  <button class="btn-white reveal" onclick="window.open('tel:010-8266-5779')">📞 1800-5549</button>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">새한신용정보주식회사 <span>일산지사</span></div>
+        <div class="footer-info">경기도 고양시 일산동구 장백로 204, 203호 (장항동, 보림빌딩)<br><strong>상담</strong> 1800-5549 · <strong>직통</strong> 010-8266-5779 · <strong>고객센터</strong> 031-994-7299<br><strong>팩스</strong> 031-994-7470 · <strong>서류팩스</strong> 0504-081-5779 · <strong>이메일</strong> <a href="mailto:jeps@naver.com" style="color:inherit;">jeps@naver.com</a></div>
+      </div>
+      <div><div class="footer-info" style="text-align:right;">금융위원회 등록 신용정보업자<br>1968년 창사 · 평일 09:00–18:00</div></div>
+    </div>
+    <div class="footer-orgs">
+      <div class="footer-orgs-title">관련기관</div>
+      <div class="footer-org-list">
+        <a class="footer-org-link" href="https://www.fsc.go.kr" target="_blank" rel="noopener"><img src="images/org-fsc.png" alt="금융위원회"><span>금융위원회</span></a>
+        <a class="footer-org-link" href="https://www.moef.go.kr" target="_blank" rel="noopener"><img src="images/org-moef.png" alt="기획재정부"><span>기획재정부</span></a>
+        <a class="footer-org-link" href="https://www.cica.or.kr" target="_blank" rel="noopener"><img src="images/org-cica.png" alt="신용정보협회"><span>신용정보협회</span></a>
+        <a class="footer-org-link" href="https://www.fss.or.kr" target="_blank" rel="noopener"><img src="images/org-fss.png" alt="금융감독원"><span>금융감독원</span></a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2025 새한신용정보주식회사 일산지사. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+/* ── 팝업 ── */
+try{ if(localStorage.getItem('popupClosed')===new Date().toDateString()) document.getElementById('popup').style.display='none'; }catch(e){}
+function closePopup(){ document.getElementById('popup').style.display='none'; }
+function closeToday(){ try{localStorage.setItem('popupClosed',new Date().toDateString());}catch(e){} closePopup(); }
+
+/* ── 팝업 드래그 ── */
+(function(){
+  const popup=document.getElementById('popup'),handle=document.getElementById('popupHandle');
+  let drag=false,ox=0,oy=0;
+  function start(cx,cy){drag=true;const r=popup.getBoundingClientRect();ox=cx-r.left;oy=cy-r.top;popup.style.transform='none';popup.style.left=r.left+'px';popup.style.top=r.top+'px';}
+  function move(cx,cy){if(!drag)return;popup.style.left=(cx-ox)+'px';popup.style.top=(cy-oy)+'px';}
+  handle.addEventListener('mousedown',e=>{start(e.clientX,e.clientY);e.preventDefault();});
+  document.addEventListener('mousemove',e=>move(e.clientX,e.clientY));
+  document.addEventListener('mouseup',()=>drag=false);
+  handle.addEventListener('touchstart',e=>{const t=e.touches[0];start(t.clientX,t.clientY);},{passive:true});
+  document.addEventListener('touchmove',e=>{if(!drag)return;const t=e.touches[0];move(t.clientX,t.clientY);e.preventDefault();},{passive:false});
+  document.addEventListener('touchend',()=>drag=false);
+})();
+
+/* ── 히어로 이미지 로드 애니메이션 ── */
+window.addEventListener('load',()=>{document.getElementById('heroBg').classList.add('loaded');});
+
+/* ── 스크롤 NAV 효과 ── */
+window.addEventListener('scroll',()=>{
+  document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>50);
+  /* 패럴랙스 */
+  const el=document.querySelector('[style*="parallax"]');
+  if(el) el.style.setProperty('--parallax', (window.scrollY*0.3)+'px');
+},{ passive:true });
+
+/* ── 스크롤 reveal 애니메이션 ── */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
+},{threshold:0.12});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>observer.observe(el));
+
+/* ── 숫자 카운터 ── */
+function animateCounter(el,target,duration=1800){
+  let start=0,startTime=null;
+  function step(ts){
+    if(!startTime) startTime=ts;
+    const progress=Math.min((ts-startTime)/duration,1);
+    const ease=1-Math.pow(1-progress,4);
+    el.textContent=Math.floor(ease*target).toLocaleString();
+    if(progress<1) requestAnimationFrame(step);
+    else el.textContent=target.toLocaleString();
+  }
+  requestAnimationFrame(step);
+}
+const counterObserver=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('[data-target]').forEach(el=>{
+        animateCounter(el,parseInt(el.dataset.target));
+      });
+      counterObserver.unobserve(e.target);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('.stats').forEach(el=>counterObserver.observe(el));
+
+/* ── FAQ ── */
+function toggleFaq(qEl){
+  const item=qEl.parentElement;
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(f=>f.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+
+/* ── 채팅 ── */
+const replies=['채권 금액과 발생 시기를 알려주시면 더 정확한 안내가 가능합니다.','연락 가능한 번호를 남겨주시면 새한신용정보 일산지사에서 직접 연락드리겠습니다.','더 빠른 상담은 1800-5549 또는 010-8266-5779로 전화 주세요.','새한신용정보 일산지사에서 확인 후 신속히 답변드리겠습니다.'];
+let ri=0;
+function sendMsg(){
+  const inp=document.getElementById('chatInput'),box=document.getElementById('chatMessages'),txt=inp.value.trim();
+  if(!txt) return;
+  const u=document.createElement('div');u.className='cw-msg user';u.textContent=txt;box.appendChild(u);
+  inp.value='';box.scrollTop=box.scrollHeight;
+  setTimeout(()=>{const b=document.createElement('div');b.className='cw-msg bot';b.textContent=replies[ri++%replies.length];box.appendChild(b);box.scrollTop=box.scrollHeight;},700);
+}
+</script>
+<script>
+  (function(){var w=window;if(w.ChannelIO){return;}var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(args){ch.q.push(args);};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return;}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x);}}if(document.readyState==="complete"){l();}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l);}})();
+  ChannelIO('boot', {pluginKey: '051a4984-9c5f-41e2-873e-60fdfc117c1f'});
+</script>
+<script src="js/shs-data.js"></script>
+<script>SHS.applyAll();</script>
+</body>
+</html>
+

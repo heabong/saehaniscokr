@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ | 새한신용정보 일산지사</title>
+<meta name="description" content="채권추심 자주 묻는 질문 — 새한신용정보 일산지사.">
+<link rel="stylesheet" href="../css/common.css">
+<style>
+.faq-page-list{margin-bottom:2rem;}
+.faq-page-item{border-top:1px solid #f0f0f0;}
+.faq-page-item:last-child{border-bottom:1px solid #f0f0f0;}
+.faq-page-q{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.4rem 0;cursor:pointer;}
+.faq-page-q:hover .faq-page-q-txt{color:#e8400c;}
+.faq-page-q-num{font-size:13px;font-weight:700;color:#e8400c;flex-shrink:0;width:24px;}
+.faq-page-q-txt{font-size:16px;font-weight:500;color:#111;flex:1;}
+.faq-page-toggle{font-size:22px;color:#e8400c;width:24px;text-align:center;transition:transform 0.2s;flex-shrink:0;}
+.faq-page-a{font-size:14px;color:#555;line-height:1.9;padding:0 0 1.4rem 2.2rem;display:none;}
+.faq-page-item.open .faq-page-a{display:block;}
+.faq-page-item.open .faq-page-toggle{transform:rotate(45deg);}
+.faq-page-item.open .faq-page-q-txt{color:#e8400c;font-weight:700;}
+.faq-cat-label{font-size:11px;font-weight:700;color:#888;letter-spacing:2px;margin:2.4rem 0 0.6rem;padding-bottom:0.6rem;border-bottom:2px solid #f0f0f0;}
+.faq-search-wrap{margin-bottom:1.6rem;}
+.faq-search{width:100%;max-width:480px;padding:12px 20px;border:1.5px solid #e0e0e0;border-radius:50px;font-size:14px;font-family:'Noto Sans KR',sans-serif;outline:none;}
+.faq-search:focus{border-color:#e8400c;}
+</style>
+</head>
+<body>
+
+<div class="quick-menu">
+  <button class="quick-btn qb-call" onclick="window.open('tel:010-8266-5779')"><span class="q-icon">📞</span><span class="q-label">무료상담</span></button>
+  <button class="quick-btn qb-direct" onclick="window.open('tel:010-8266-5779')"><span class="q-icon">📱</span><span class="q-label">직통</span></button>
+  <button class="quick-btn qb-chat" onclick="window.open('https://open.kakao.com/o/sznuzxhi','_blank')"><span class="q-icon">💬</span><span class="q-label">채팅</span></button>
+  <button class="quick-btn qb-fax" onclick="alert('서류팩스: 0504-081-5779\n고객센터팩스: 031-994-7470')"><span class="q-icon">📠</span><span class="q-label">팩스</span></button>
+  <button class="quick-btn qb-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><span class="q-icon">↑</span><span class="q-label">TOP</span></button>
+</div>
+
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html"><img src="../images/logo.png" alt="새한신용정보주식회사" style="height:auto;max-height:52px;width:auto;max-width:200px;object-fit:contain;display:block;"></a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="../index.html">홈</a></li>
+        <li><a href="collection.html">사업안내 ▾</a><div class="dropdown"><a href="collection.html">채권추심</a><a href="credit.html">재산·신용조사</a></div></li>
+        <li><a href="about.html">회사소개 ▾</a><div class="dropdown"><a href="about.html">대표이사 인사말</a><a href="about.html#history">회사연혁</a><a href="about.html#vision">VISION</a><a href="about.html#map">오시는길</a></div></li>
+        <li><a href="notice.html">공지사항</a></li>
+        <li><a href="faq.html" class="active">FAQ</a></li>
+        <li><a href="chat.html">채팅상담</a></li>
+        <li><a href="contact.html">연락처</a></li>
+      </ul>
+      <button class="nav-call" onclick="window.open('tel:010-8266-5779')">📞 1800-5549</button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-in">
+    <div class="page-breadcrumb"><a href="../index.html" style="color:#555;text-decoration:none;">홈</a> <span>›</span> <span class="cur">FAQ</span></div>
+    <h1>자주 묻는 질문</h1>
+    <p>채권추심에 관해 가장 많이 문의하시는 질문들을 모았습니다</p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="faq-search-wrap">
+    <input class="faq-search" type="text" placeholder="질문을 검색하세요..." oninput="searchFaq(this.value)">
+  </div>
+
+  <div class="faq-page-list" id="faqList">
+
+    <div class="faq-cat-label">상담 · 비용</div>
+
+    <div class="faq-page-item open">
+      <div class="faq-page-q" onclick="toggleFaq(this.parentElement)">
+        <span class="faq-page-q-num">Q</span>
+        <span class="faq-page-q-txt">상담은 정말 무료인가요?</span>
+        <span class="faq-page-toggle">+</span>
+      </div>
+      <div class="faq-page-a">네, 상담은 완전 무료입니다. 전화(1800-5549)는 수신자 부담이라 통화료도 없습니다. 위임 계약 체결 전까지 어떠한 비용도 발생하지 않습니다.</div>
+    </div>
+
+    <div class="faq-page-item">
+      <div class="faq-page-q" onclick="toggleFaq(this.parentElement)">
+        <span class="faq-page-q-num">Q</span>
+        <span class="faq-page-q-txt">수수료는 얼마인가요?</span>
+        <span class="faq-page-toggle">+</span>
+      </div>
+      <div class="faq-page-a">성공보수 방식으로 채권 회수에 성공했을 때만 수수료가 발생합니다. 수수료 비율은 채권의 종류, 금액, 난이도 등에 따라 다르므로 상담 시 개별 안내해 드립니다. 회수에 실패하면 수수료는 없습니다. (단, 2024년부터 수수료에 부가가치세 10% 부과)</div>
+    </div>
+
+    <div class="faq-page-item">
+      <div class="faq-page-q" onclick="toggleFaq(this.parentElement)">
+        <span class="faq-page-q-num">Q</span>
+        <span class="faq-page-q-txt">소액도 추심이 가능한가요?</span>
+        <span class="faq-page-toggle">+</span>
+      </div>
+      <div class="faq-page-a">네, 금액에 관계없이 상담 가능합니다. 소액이라도 시간이 지날수록 소멸시효 등으로 회수가 어려워지므로 빠른 상담을 권장합니다. 다만 매우 소액의 경우 수수료 대비 회수 효율을 고려해 솔직하게 안내드립니다.</div>
+    </div>
+
+    <div class="faq-cat-label">추심 대상 · 범위</div>
+
+    <div class="faq-page-item">
+      <div class="faq-page-q" onclick="toggleFaq(this.parentElement)">
+        <span class="faq-page-q-num">Q</span>
+        <span class="faq-page-q-txt">어떤 종류의 채권을 추심할 수 있나요?</span>
+        <span class="faq-page-toggle">+</span>
+      </div>
+      <div class="faq-page-a">물품대금·용역대금 등 기업 간 매출채권, 개인 간 차용금, 임대차 보증금·월세, 공사대금, 판결·공증 채권 등 다양한 채권을 취급합니다. 어떤 채권이든 일단 상담 주시면 가능 여부를 검토합니다.</div>
+    </div>
+
+    <div class="faq-page-item">
+      <div class="faq-page-q" onclick="toggleFaq(this.parentElement)">
+        <span class="faq-page-q-num">Q</span>
+        <span class="faq-page-q-txt">일산 외 지역 채무자도 추심 가능한가요?</span>
+        <span class="faq-page-toggle">+</span>
+      </div>
+      <div class="faq-page-a">전국 어디든 가능합니다. 새한신용정보 전국 지사 네트워크를 통해 채무자 위치에 관계없이 처리할 수 있습니다. 해외 거주자의 경우 별도 상담이 필요합니다.</div>
+    </div>
+
+    <div class="faq-page-item">
+      <div class="faq-page-q" onclick="toggleFaq(this.parentElement)">
+        <span class="faq-page-q-num">Q</span>
+        <span class="faq-page-q-txt">법인(회사)에 대한 채권도 추심되나요?</span>
+        <span class="faq-page-toggle">+</span>
+      </div>
+      <div class="faq-page-a">네, 개인 채무자뿐 아니라 법인 채무자에 대한 채권도 추심합니다. 법인의 경우 재산 조사 범위가 다소 다르지만, 동일하게 합법적인 방법으로 진행합니다.</div>
+    </div>
+
+    <div class="faq-cat-label">절차 · 기간</div>
+
+    <div class="faq-page-item">
+      <div class="faq-page-q" onclick="toggleFaq(this.parentElement)">
+        <span class="faq-page-q-num">Q</span>
+        <span class="faq-page-q-txt">추심까지 얼마나 걸리나요?</span>
+        <span class="faq-page-toggle">+</span>
+      </div>
+      <div class="faq-page-a">채권의 성격과 채무자 상황에 따라 다릅니다. 채무자가 자발적으로 변제하면 수일~수주 내 해결되기도 하고, 법적 절차가 필요한 경우 수개월이 소요될 수 있습니다. 상담 시 예상 기간을 안내드립니다.</div>
+    </div>
+
+    <div class="faq-page-item">
+      <div class="faq-page-q" onclick="toggleFaq(this.parentElement)">
+        <span class="faq-page-q-num">Q</span>
+        <span class="faq-page-q-txt">채권자(의뢰인)가 해야 할 일이 있나요?</span>
+        <span class="faq-page-toggle">+</span>
+      </div>
+      <div class="faq-page-a">위임 계약 체결 시 필요 서류를 제출하고, 이후 추심 진행 상황은 담당자가 주기적으로 보고드립니다. 추가 정보가 필요한 경우 협조 요청을 드릴 수 있습니다. 일반적으로 의뢰 후 담당자가 대부분의 업무를 처리합니다.</div>
+    </div>
+
+    <div class="faq-cat-label">합법성 · 채무자 권리</div>
+
+    <div class="faq-page-item">
+      <div class="faq-page-q" onclick="toggleFaq(this.parentElement)">
+        <span class="faq-page-q-num">Q</span>
+        <span class="faq-page-q-txt">합법적인 추심인가요?</span>
+        <span class="faq-page-toggle">+</span>
+      </div>
+      <div class="faq-page-a">새한신용정보주식회사는 금융위원회에 등록된 합법 신용정보업자입니다. 채무자 인권을 보호하며 채권추심법이 허용하는 범위 내에서만 진행합니다. 야간 연락, 협박, 제3자 고지 등 불법 행위는 절대 하지 않습니다.</div>
+    </div>
+
+    <div class="faq-page-item">
+      <div class="faq-page-q" onclick="toggleFaq(this.parentElement)">
+        <span class="faq-page-q-num">Q</span>
+        <span class="faq-page-q-txt">채무자가 연락을 끊으면 어떻게 하나요?</span>
+        <span class="faq-page-toggle">+</span>
+      </div>
+      <div class="faq-page-a">재산·신용조사를 통해 채무자 소재 및 재산을 파악합니다. 소재 확인 후 내용증명 발송, 법원을 통한 지급명령·소송, 강제집행 등 법적 절차를 순차적으로 진행합니다.</div>
+    </div>
+
+    <div class="faq-page-item">
+      <div class="faq-page-q" onclick="toggleFaq(this.parentElement)">
+        <span class="faq-page-q-num">Q</span>
+        <span class="faq-page-q-txt">채무자가 재산이 없으면 회수가 불가능한가요?</span>
+        <span class="faq-page-toggle">+</span>
+      </div>
+      <div class="faq-page-a">현재 재산이 없더라도 추심을 포기할 필요는 없습니다. 채무자의 재산 상황은 언제든 변할 수 있고, 소멸시효 중단을 위한 조치(지급명령 신청 등)를 취해 권리를 보전할 수 있습니다. 담당자와 구체적인 전략을 상담하세요.</div>
+    </div>
+
+  </div>
+
+  <div class="cta-box">
+    <h3>원하는 답변을 못 찾으셨나요?</h3>
+    <p>담당자 정해봉이 직접 답변드립니다.</p>
+    <div class="cta-box-btns">
+      <button class="btn-red" onclick="window.open('tel:010-8266-5779')">📞 1800-5549 전화 상담</button>
+      <button class="btn-outline" onclick="window.open('https://open.kakao.com/o/sznuzxhi','_blank')">💬 채팅 상담</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-in">
+    <div class="footer-top">
+      <div><div class="footer-brand">새한신용정보주식회사 <span>일산지사</span></div><div class="footer-info">경기도 고양시 일산동구 장백로 204, 203호 (장항동, 보림빌딩)<br><strong>상담</strong> 1800-5549 · <strong>직통</strong> 010-8266-5779 · <strong>고객센터</strong> 031-994-7299<br><strong>팩스</strong> 031-994-7470 · <strong>서류팩스</strong> 0504-081-5779 · <strong>이메일</strong> <a href="mailto:jeps@naver.com" style="color:inherit;">jeps@naver.com</a></div></div>
+      <div><div class="footer-info" style="text-align:right;">금융위원회 등록 신용정보업자<br>1968년 창사 · 평일 09:00–18:00</div></div>
+    </div>
+    <div class="footer-orgs">
+      <div class="footer-orgs-title">관련기관</div>
+      <div class="footer-org-list">
+        <a class="footer-org-link" href="https://www.fsc.go.kr" target="_blank" rel="noopener"><img src="../images/org-fsc.png" alt="금융위원회"><span>금융위원회</span></a>
+        <a class="footer-org-link" href="https://www.moef.go.kr" target="_blank" rel="noopener"><img src="../images/org-moef.png" alt="기획재정부"><span>기획재정부</span></a>
+        <a class="footer-org-link" href="https://www.cica.or.kr" target="_blank" rel="noopener"><img src="../images/org-cica.png" alt="신용정보협회"><span>신용정보협회</span></a>
+        <a class="footer-org-link" href="https://www.fss.or.kr" target="_blank" rel="noopener"><img src="../images/org-fss.png" alt="금융감독원"><span>금융감독원</span></a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2025 새한신용정보주식회사 일산지사. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(item){
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-page-item').forEach(f=>f.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+function searchFaq(val){
+  const q = val.trim().toLowerCase();
+  document.querySelectorAll('.faq-page-item').forEach(item=>{
+    const txt = item.querySelector('.faq-page-q-txt').textContent.toLowerCase();
+    const ans = item.querySelector('.faq-page-a').textContent.toLowerCase();
+    item.style.display = (!q || txt.includes(q) || ans.includes(q)) ? '' : 'none';
+  });
+  document.querySelectorAll('.faq-cat-label').forEach(label=>{
+    label.style.display = '';
+  });
+}
+</script>
+<script>
+  (function(){var w=window;if(w.ChannelIO){return;}var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(args){ch.q.push(args);};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return;}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x);}}if(document.readyState==="complete"){l();}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l);}})();
+  ChannelIO('boot', {pluginKey: '051a4984-9c5f-41e2-873e-60fdfc117c1f'});
+</script>
+<script src="../js/shs-data.js"></script>
+<script>SHS.applyAll();</script>
+</body>
+</html>
+

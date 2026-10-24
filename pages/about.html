@@ -1,0 +1,449 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>회사소개 | 새한신용정보 일산지사</title>
+<meta name="description" content="새한신용정보주식회사 일산지사 회사 소개, 연혁, 경영이념, 오시는길.">
+<link rel="stylesheet" href="../css/common.css">
+<style>
+.greeting-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:3rem;}
+.greeting-right{background:linear-gradient(135deg,#0a0a0a,#0d2e1e,#003d25);border-radius:20px;min-height:280px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.greeting-neon{position:absolute;width:200%;height:6px;background:linear-gradient(90deg,transparent,#00ffb3,#00e5a0,transparent);border-radius:4px;transform:rotate(-35deg);box-shadow:0 0 30px #00e5a0;}
+.greeting-badge{z-index:2;text-align:center;color:#fff;}
+.greeting-badge .name{font-size:28px;font-weight:900;letter-spacing:-1px;}
+.greeting-badge .title{font-size:13px;color:#00ffb3;margin-top:4px;}
+.history-list{display:flex;flex-direction:column;gap:0;}
+.history-item{display:grid;grid-template-columns:100px 1fr;gap:1.2rem;padding:1.2rem 0;border-bottom:1px solid #f0f0f0;align-items:baseline;}
+.history-year{font-size:18px;font-weight:900;color:#e8400c;letter-spacing:-0.5px;}
+.history-desc{font-size:14px;color:#555;line-height:1.8;}
+.vision-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:2.4rem;}
+.vision-card{background:#111;border-radius:16px;padding:2rem 1.6rem;text-align:center;}
+.vision-card .v-icon{font-size:36px;margin-bottom:1rem;}
+.vision-card h3{font-size:16px;font-weight:700;color:#fff;margin-bottom:0.6rem;}
+.vision-card p{font-size:13px;color:#666;line-height:1.7;}
+.map-wrap{background:#f7f7f7;border-radius:16px;padding:2rem;margin-bottom:2rem;}
+.map-placeholder{background:#e0e0e0;border-radius:12px;height:300px;display:flex;align-items:center;justify-content:center;margin-bottom:1.4rem;font-size:14px;color:#888;}
+.map-info{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;}
+.map-info-item{background:#fff;border-radius:12px;padding:1.2rem 1.4rem;border:1px solid #efefef;}
+.map-info-item .mi-label{font-size:11px;font-weight:500;color:#888;letter-spacing:1px;margin-bottom:4px;}
+.map-info-item .mi-value{font-size:14px;font-weight:700;color:#111;line-height:1.6;}
+@media(max-width:768px){.greeting-wrap{grid-template-columns:1fr;}.vision-grid{grid-template-columns:1fr;}.map-info{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="quick-menu">
+  <button class="quick-btn qb-call" onclick="window.open('tel:010-8266-5779')"><span class="q-icon">📞</span><span class="q-label">무료상담</span></button>
+  <button class="quick-btn qb-direct" onclick="window.open('tel:010-8266-5779')"><span class="q-icon">📱</span><span class="q-label">직통</span></button>
+  <button class="quick-btn qb-chat" onclick="window.open('https://open.kakao.com/o/sznuzxhi','_blank')"><span class="q-icon">💬</span><span class="q-label">채팅</span></button>
+  <button class="quick-btn qb-fax" onclick="alert('서류팩스: 0504-081-5779\n고객센터팩스: 031-994-7470')"><span class="q-icon">📠</span><span class="q-label">팩스</span></button>
+  <button class="quick-btn qb-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><span class="q-icon">↑</span><span class="q-label">TOP</span></button>
+</div>
+
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="../index.html"><img src="../images/logo.png" alt="새한신용정보주식회사" style="height:auto;max-height:52px;width:auto;max-width:200px;object-fit:contain;display:block;"></a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="../index.html">홈</a></li>
+        <li><a href="collection.html">사업안내 ▾</a><div class="dropdown"><a href="collection.html">채권추심</a><a href="credit.html">재산·신용조사</a></div></li>
+        <li><a href="about.html" class="active">회사소개 ▾</a><div class="dropdown"><a href="about.html" class="active">대표이사 인사말</a><a href="about.html#history">회사연혁</a><a href="about.html#vision">VISION</a><a href="about.html#map">오시는길</a></div></li>
+        <li><a href="notice.html">공지사항</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="chat.html">채팅상담</a></li>
+        <li><a href="contact.html">연락처</a></li>
+      </ul>
+      <button class="nav-call" onclick="window.open('tel:010-8266-5779')">📞 1800-5549</button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-in">
+    <div class="page-breadcrumb"><a href="../index.html" style="color:#555;text-decoration:none;">홈</a> <span>›</span> <span class="cur">회사소개</span></div>
+    <h1>회사소개</h1>
+    <p>1968년 창사, 58년 역사의 신뢰 — 새한신용정보 일산지사</p>
+  </div>
+</div>
+
+<div class="tab-bar">
+  <div class="tab-bar-in">
+    <button class="tab-btn active" onclick="showTab('greeting')">대표이사 인사말</button>
+    <button class="tab-btn" onclick="showTab('history')">회사연혁</button>
+    <button class="tab-btn" onclick="showTab('vision')">경영이념 · VISION</button>
+    <button class="tab-btn" onclick="showTab('map')">오시는길</button>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- 대표이사 인사말 -->
+  <div class="tab-panel active" id="tab-greeting">
+    <div class="greeting-wrap">
+      <div>
+        <div class="section-kicker" style="font-size:12px;font-weight:500;color:#e8400c;letter-spacing:3px;margin-bottom:1rem;">GREETING</div>
+        <h2 style="font-size:30px;font-weight:900;color:#111;letter-spacing:-1px;margin-bottom:2rem;line-height:1.3;">신용사회 구현의 100년 기업으로<br>거듭나겠습니다.</h2>
+
+        <div style="margin-bottom:2rem;">
+          <h3 style="font-size:15px;font-weight:700;color:#111;margin-bottom:0.7rem;">환영의 인사와 깊은 감사</h3>
+          <p style="font-size:15px;color:#555;line-height:1.9;">새한신용정보를 아끼고 사랑해 주시는 고객 여러분께 진심으로 감사의 말씀을 드립니다. 저희 회사는 창립 이래로 신뢰와 혁신을 바탕으로 성장해왔으며, 고객의 경제적 부실을 막아 금융거래의 순환을 돕는 신용사회 구현을 최우선으로 하는 경영 철학을 유지해왔습니다.</p>
+        </div>
+
+        <div style="margin-bottom:2rem;">
+          <h3 style="font-size:15px;font-weight:700;color:#111;margin-bottom:0.7rem;">현재까지 이어져 온 역사</h3>
+          <p style="font-size:15px;color:#555;line-height:1.9;">저희 새한신용정보는 1968년 창립 이후, 반세기 넘게 지속 가능한 성장을 목표로 신용정보 분야에서 선도적인 위치를 공고히 해왔습니다. 창립 이래로 쌓아온 경험과 노하우를 바탕으로 끊임없는 기술 혁신과 고객 맞춤형 서비스를 통해 더욱 향상된 품질과 신뢰를 제공하겠습니다.</p>
+        </div>
+
+        <div style="margin-bottom:2rem;">
+          <h3 style="font-size:15px;font-weight:700;color:#111;margin-bottom:0.7rem;">함께 나아갈 미래</h3>
+          <p style="font-size:15px;color:#555;line-height:1.9;">급변하는 금융 환경 속에서 고객 여러분의 요구에 신속하게 대응하고, 보다 나은 솔루션을 제공하기 위해 최선을 다하고 있습니다. 앞으로도 저희 새한신용정보는 고객 여러분의 성공적인 비즈니스 파트너로서, 항상 함께 할 것을 약속드립니다.</p>
+        </div>
+
+        <div style="margin-bottom:2rem;">
+          <h3 style="font-size:15px;font-weight:700;color:#111;margin-bottom:0.7rem;">고객과의 약속</h3>
+          <p style="font-size:15px;color:#555;line-height:1.9;">새한신용정보의 모든 임직원들은 고객의 신뢰를 바탕으로 최상의 서비스를 제공하기 위해 끊임없이 노력하고 있습니다. 고객 여러분의 기대에 부응하고, 사회에 기여하는 책임 있는 기업으로서의 역할을 다하겠습니다.</p>
+        </div>
+
+        <div style="margin-bottom:2rem;">
+          <h3 style="font-size:15px;font-weight:700;color:#111;margin-bottom:0.7rem;">변함없는 성원에 대한 감사와 다짐</h3>
+          <p style="font-size:15px;color:#555;line-height:1.9;">끝으로, 고객 여러분의 변함없는 성원에 깊이 감사드리며, 앞으로도 많은 관심과 격려 부탁드립니다. 여러분의 가정과 사업에 무궁한 발전이 있기를 기원합니다. 감사합니다.</p>
+        </div>
+
+        <p style="font-size:16px;font-weight:700;color:#111;margin-top:2rem;line-height:2;">새한신용정보주식회사<br>대표이사&nbsp;&nbsp;<span style="color:#e8400c;font-size:18px;letter-spacing:2px;">양 재 혁</span></p>
+      </div>
+      <div class="greeting-right">
+        <div class="greeting-neon"></div>
+        <div class="greeting-badge">
+          <div class="name" style="font-size:22px;">양 재 혁</div>
+          <div class="title">새한신용정보주식회사 대표이사</div>
+          <div style="margin-top:1.2rem;font-size:12px;color:rgba(255,255,255,0.45);line-height:2;">1968년 창사<br>신용사회 구현 100년 기업</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-grid">
+      <div class="info-card"><div class="info-card-icon">🏆</div><h3>1968년 창사</h3><p>58년 역사를 가진 대한민국 최고의 신용정보회사입니다.</p></div>
+      <div class="info-card"><div class="info-card-icon">🏛️</div><h3>금융위원회 등록</h3><p>합법적으로 등록된 신용정보업자로 법적 테두리 안에서만 업무를 수행합니다.</p></div>
+      <div class="info-card"><div class="info-card-icon">🌐</div><h3>전국 지사 네트워크</h3><p>전국 어디서든 새한신용정보 지사 네트워크를 통해 채권을 회수합니다.</p></div>
+      <div class="info-card"><div class="info-card-icon">🤝</div><h3>성공보수제</h3><p>회수가 되어야만 수수료가 발생합니다. 미회수 시 비용 없음.</p></div>
+    </div>
+  </div>
+
+  <!-- 회사연혁 -->
+  <div class="tab-panel" id="tab-history">
+    <div class="content-title" id="history">새한신용정보 <span>주요 연혁</span></div>
+    <div class="history-list">
+      <div class="history-item"><div class="history-year">1968</div><div class="history-desc">새한신용정보주식회사 창립</div></div>
+      <div class="history-item"><div class="history-year">1970년대</div><div class="history-desc">전국 지사 네트워크 구축 시작 · 채권추심업 본격 전개</div></div>
+      <div class="history-item"><div class="history-year">1990년대</div><div class="history-desc">금융위원회(구 재정경제부) 신용정보업 등록 · 업무 범위 확대</div></div>
+      <div class="history-item"><div class="history-year">2000년대</div><div class="history-desc">디지털 채권관리 시스템 도입 · 전국 지사망 현대화</div></div>
+      <div class="history-item"><div class="history-year">2010년대</div><div class="history-desc">개인정보보호 강화 시스템 구축 · 채무자 인권 보호 프로세스 정립</div></div>
+      <div class="history-item"><div class="history-year">2020</div><div class="history-desc">비대면 채팅상담 서비스 도입</div></div>
+      <div class="history-item"><div class="history-year">2021</div><div class="history-desc">일산지사 경기도 고양시 일산동구 장백로 204, 203호 이전</div></div>
+      <div class="history-item"><div class="history-year">2025</div><div class="history-desc">창사 57주년 · 업계 최고 수준의 채권회수율 유지</div></div>
+      <div class="history-item"><div class="history-year">현재</div><div class="history-desc">금융위원회 등록 합법 신용정보업자 · 전국 지사 운영 중</div></div>
+    </div>
+  </div>
+
+  <!-- VISION -->
+  <div class="tab-panel" id="tab-vision">
+    <div class="content-title" id="vision">경영이념 · <span>VISION</span></div>
+
+    <style>
+    .vision-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-bottom:2.4rem;}
+    .vision-card3{background:#fff;border:1.5px solid #e8eaf0;border-radius:16px;padding:2.4rem 1.8rem;text-align:center;transition:box-shadow 0.2s,transform 0.2s;}
+    .vision-card3:hover{box-shadow:0 12px 32px rgba(26,60,110,0.1);transform:translateY(-4px);}
+    .v-icon3{display:flex;justify-content:center;margin-bottom:1.4rem;}
+    .vision-card3 h3{font-size:20px;font-weight:800;color:#111;letter-spacing:-0.5px;margin-bottom:1.2rem;}
+    .vision-card3 ul{list-style:none;padding:0;text-align:left;}
+    .vision-card3 ul li{font-size:14px;color:#555;line-height:2;padding-left:1rem;position:relative;}
+    .vision-card3 ul li::before{content:"-";position:absolute;left:0;color:#1a3c6e;}
+    @media(max-width:768px){.vision-grid3{grid-template-columns:1fr;}}
+    </style>
+
+    <div class="vision-grid3">
+      <div class="vision-card3">
+        <div class="v-icon3">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="56" height="56">
+            <circle cx="32" cy="32" r="18" stroke="#1a3c6e" stroke-width="2.5"/>
+            <circle cx="32" cy="32" r="9" stroke="#1a3c6e" stroke-width="2.5"/>
+            <circle cx="32" cy="32" r="3" fill="#1a3c6e"/>
+            <line x1="32" y1="14" x2="32" y2="10" stroke="#1a3c6e" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="32" y1="54" x2="32" y2="50" stroke="#1a3c6e" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="14" y1="32" x2="10" y2="32" stroke="#1a3c6e" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="54" y1="32" x2="50" y2="32" stroke="#1a3c6e" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="46" y1="18" x2="52" y2="12" stroke="#1a3c6e" stroke-width="2.5" stroke-linecap="round"/>
+            <polyline points="48,12 52,12 52,16" stroke="#1a3c6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>정도 경영</h3>
+        <ul>
+          <li>준법·윤리 경영 원칙 고수</li>
+          <li>불법 부정 행위 근절 실현</li>
+        </ul>
+      </div>
+      <div class="vision-card3">
+        <div class="v-icon3">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="56" height="56">
+            <path d="M18 30 C14 26 14 20 18 17 C21 14 25 15 27 18 C29 15 33 14 36 17 C40 20 40 26 36 30 L27 42 Z" stroke="#1a3c6e" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M36 30 L44 36 C48 39 47 44 43 46 L38 48" stroke="#1a3c6e" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M18 48 L38 48 C40 47 40 44 38 43 L27 42" stroke="#1a3c6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>내실 경영</h3>
+        <ul>
+          <li>건실 경영으로 수익 증대</li>
+          <li>협력과 상생의 조직문화 구축</li>
+        </ul>
+      </div>
+      <div class="vision-card3">
+        <div class="v-icon3">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="56" height="56">
+            <path d="M32 8 C22 8 14 16 14 26 C14 33 18 39 24 42 L24 50 L40 50 L40 42 C46 39 50 33 50 26 C50 16 42 8 32 8 Z" stroke="#1a3c6e" stroke-width="2.5" stroke-linejoin="round"/>
+            <line x1="26" y1="54" x2="38" y2="54" stroke="#1a3c6e" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="29" y1="58" x2="35" y2="58" stroke="#1a3c6e" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="32" y1="8" x2="32" y2="4" stroke="#1a3c6e" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="50" y1="26" x2="54" y2="26" stroke="#1a3c6e" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="14" y1="26" x2="10" y2="26" stroke="#1a3c6e" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="46" y1="12" x2="49" y2="9" stroke="#1a3c6e" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="18" y1="12" x2="15" y2="9" stroke="#1a3c6e" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>창조 경영</h3>
+        <ul>
+          <li>신규 수익모델 개발</li>
+          <li>대표 브랜드 이미지 구축</li>
+        </ul>
+      </div>
+    </div>
+
+    <style>
+    .vision-diagram{margin-top:2.4rem;overflow-x:auto;}
+    .vd-inner{min-width:600px;max-width:900px;margin:0 auto;padding:1rem 0 2rem;}
+
+    /* 타임라인 rows */
+    .vd-row{display:grid;grid-template-columns:120px 1fr;align-items:center;gap:1.2rem;margin-bottom:0;}
+    .vd-year{font-size:20px;font-weight:900;color:#1a3c6e;text-align:right;}
+    .vd-year small{display:block;font-size:11px;font-weight:400;color:#aaa;line-height:1.4;}
+    .vd-line-h{width:36px;height:2px;background:#ccc;display:inline-block;vertical-align:middle;margin-right:8px;}
+
+    .vd-milestone{border:2px solid #d0d8e8;border-radius:50px;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;background:#fff;position:relative;}
+    .vd-milestone.highlight{border-color:#1a7fd4;border-width:2.5px;}
+    .vd-milestone-side{font-size:12px;color:#888;min-width:70px;}
+    .vd-milestone-side.right{text-align:right;}
+    .vd-milestone-center{text-align:center;flex:1;}
+    .vd-milestone-center strong{font-size:20px;font-weight:900;color:#111;letter-spacing:-0.5px;}
+    .vd-milestone.highlight .vd-milestone-center strong{color:#1a7fd4;}
+    .vd-milestone-center span.accent{color:#1a7fd4;font-weight:900;}
+
+    /* 화살표 */
+    .vd-arrow-row{display:grid;grid-template-columns:120px 1fr;gap:1.2rem;height:36px;}
+    .vd-arrows{display:flex;justify-content:space-around;align-items:center;padding:0 40px;}
+    .vd-arrow{width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:12px solid #b0bdd0;}
+    .vd-arrow.blue{border-bottom-color:#1a7fd4;}
+
+    /* 3 circles */
+    .vd-circles-row{display:grid;grid-template-columns:120px 1fr;gap:1.2rem;margin:8px 0;}
+    .vd-circles{display:flex;justify-content:space-around;align-items:center;padding:0 20px;}
+    .vd-circle-wrap{display:flex;flex-direction:column;align-items:center;}
+    .vd-circle-outer{width:130px;height:130px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;}
+    .vd-circle-outer.c1{background:rgba(0,180,160,0.15);}
+    .vd-circle-outer.c2{background:rgba(30,120,210,0.15);}
+    .vd-circle-outer.c3{background:rgba(20,60,140,0.15);}
+    .vd-circle-inner{width:100px;height:100px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+    .vd-circle-inner.c1{background:#00b4a0;}
+    .vd-circle-inner.c2{background:#1e78d2;}
+    .vd-circle-inner.c3{background:#1a3c8e;}
+    .vd-circle-inner span{font-size:16px;font-weight:800;color:#fff;letter-spacing:-0.3px;}
+    .vd-circle-inner small{font-size:11px;color:rgba(255,255,255,0.75);}
+
+    /* 핵심역량 bottom bar */
+    .vd-bottom-row{display:grid;grid-template-columns:120px 1fr;gap:1.2rem;align-items:center;margin-top:8px;}
+    .vd-bottom-label{font-size:12px;font-weight:600;color:#555;text-align:right;line-height:1.5;}
+    .vd-bottom-bar{border:2px solid #1a7fd4;border-radius:8px;padding:20px;text-align:center;background:#f0f6ff;}
+    .vd-bottom-bar strong{font-size:22px;font-weight:900;color:#111;letter-spacing:-1px;}
+    </style>
+
+    <div class="vision-diagram">
+      <div class="vd-inner">
+
+        <!-- 2026 목표 -->
+        <div class="vd-row">
+          <div class="vd-year">2026<small>목표</small></div>
+          <div class="vd-milestone highlight">
+            <span class="vd-milestone-side">신용조사업</span>
+            <div class="vd-milestone-center"><strong>신용사회 구현 <span class="accent">100년</span> 기업</strong></div>
+            <span class="vd-milestone-side right">채권추심업</span>
+          </div>
+        </div>
+
+        <!-- 화살표 1 -->
+        <div class="vd-arrow-row">
+          <div></div>
+          <div class="vd-arrows">
+            <div class="vd-arrow blue"></div>
+          </div>
+        </div>
+
+        <!-- 2019 -->
+        <div class="vd-row">
+          <div class="vd-year">2019</div>
+          <div class="vd-milestone">
+            <span class="vd-milestone-side">디지털 전환</span>
+            <div class="vd-milestone-center"><strong><span class="accent">일산지사</span> 비대면 서비스 확대</strong></div>
+            <span class="vd-milestone-side right">고객만족</span>
+          </div>
+        </div>
+
+        <!-- 화살표 2 -->
+        <div class="vd-arrow-row">
+          <div></div>
+          <div class="vd-arrows">
+            <div class="vd-arrow"></div>
+          </div>
+        </div>
+
+        <!-- 2000 -->
+        <div class="vd-row">
+          <div class="vd-year">2000년대</div>
+          <div class="vd-milestone">
+            <span class="vd-milestone-side">신용조사업</span>
+            <div class="vd-milestone-center"><strong>안정된 <span class="accent">사업기반</span> 구축</strong></div>
+            <span class="vd-milestone-side right">채권추심업</span>
+          </div>
+        </div>
+
+        <!-- 화살표 3 -->
+        <div class="vd-arrow-row">
+          <div></div>
+          <div class="vd-arrows" style="justify-content:space-around;padding:0 80px;">
+            <div class="vd-arrow"></div>
+            <div class="vd-arrow"></div>
+            <div class="vd-arrow"></div>
+          </div>
+        </div>
+
+        <!-- 3 circles -->
+        <div class="vd-circles-row">
+          <div></div>
+          <div class="vd-circles">
+            <div class="vd-circle-wrap">
+              <div class="vd-circle-outer c1">
+                <div class="vd-circle-inner c1">
+                  <span>인재</span>
+                  <small>Talent</small>
+                </div>
+              </div>
+            </div>
+            <div class="vd-circle-wrap">
+              <div class="vd-circle-outer c2">
+                <div class="vd-circle-inner c2">
+                  <span>시스템</span>
+                  <small>System</small>
+                </div>
+              </div>
+            </div>
+            <div class="vd-circle-wrap">
+              <div class="vd-circle-outer c3">
+                <div class="vd-circle-inner c3">
+                  <span>서비스</span>
+                  <small>Service</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 화살표 4 (blue center) -->
+        <div class="vd-arrow-row">
+          <div></div>
+          <div class="vd-arrows">
+            <div class="vd-arrow blue"></div>
+          </div>
+        </div>
+
+        <!-- 핵심역량 bar -->
+        <div class="vd-bottom-row">
+          <div class="vd-bottom-label">신바람 나는<br>기업문화</div>
+          <div class="vd-bottom-bar"><strong>핵심역량 극대화</strong></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 오시는길 -->
+  <div class="tab-panel" id="tab-map">
+    <div class="content-title" id="map">오시는 <span>길</span></div>
+    <div class="map-wrap">
+      <div style="border-radius:12px;overflow:hidden;height:360px;background:#e0e0e0;">
+        <iframe
+          src="https://maps.google.com/maps?q=경기도+고양시+일산동구+장백로+204&t=&z=17&ie=UTF8&iwloc=&output=embed"
+          width="100%" height="360" style="border:0;display:block;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" title="새한신용정보 일산지사 위치"></iframe>
+      </div>
+      <div style="margin-top:0.8rem;text-align:right;">
+        <a href="https://maps.google.com/maps?q=경기도+고양시+일산동구+장백로+204" target="_blank" rel="noopener"
+           style="font-size:12px;color:#1a3c6e;text-decoration:none;">🔍 구글지도에서 크게 보기</a>
+        &nbsp;|&nbsp;
+        <a href="https://map.naver.com/v5/search/경기도 고양시 일산동구 장백로 204" target="_blank" rel="noopener"
+           style="font-size:12px;color:#1a3c6e;text-decoration:none;">🗺️ 네이버지도에서 보기</a>
+      </div>
+      <div class="map-info">
+        <div class="map-info-item"><div class="mi-label">주소</div><div class="mi-value">경기도 고양시 일산동구<br>장백로 204, 203호<br>(장항동, 보림빌딩)</div></div>
+        <div class="map-info-item"><div class="mi-label">연락처</div><div class="mi-value">상담: 1800-5549<br>직통: 010-8266-5779<br>고객센터: 031-994-7299</div></div>
+        <div class="map-info-item"><div class="mi-label">운영시간</div><div class="mi-value">평일 09:00 – 18:00<br>토·일·공휴일 휴무</div></div>
+        <div class="map-info-item"><div class="mi-label">대중교통</div><div class="mi-value">지하철 3호선 마두역<br>인근 버스정류장 이용</div></div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <h3>방문 전 전화 예약을 권장합니다</h3>
+      <p>담당자 정해봉이 직접 응대합니다. 사전 연락 후 방문해 주세요.</p>
+      <div class="cta-box-btns">
+        <button class="btn-red" onclick="window.open('tel:010-8266-5779')">📞 1800-5549</button>
+        <button class="btn-outline" onclick="window.open('tel:010-8266-5779')">010-8266-5779</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-in">
+    <div class="footer-top">
+      <div><div class="footer-brand">새한신용정보주식회사 <span>일산지사</span></div><div class="footer-info">경기도 고양시 일산동구 장백로 204, 203호 (장항동, 보림빌딩)<br><strong>상담</strong> 1800-5549 · <strong>직통</strong> 010-8266-5779 · <strong>고객센터</strong> 031-994-7299<br><strong>팩스</strong> 031-994-7470 · <strong>서류팩스</strong> 0504-081-5779 · <strong>이메일</strong> <a href="mailto:jeps@naver.com" style="color:inherit;">jeps@naver.com</a></div></div>
+      <div><div class="footer-info" style="text-align:right;">금융위원회 등록 신용정보업자<br>1968년 창사 · 평일 09:00–18:00</div></div>
+    </div>
+    <div class="footer-orgs">
+      <div class="footer-orgs-title">관련기관</div>
+      <div class="footer-org-list">
+        <a class="footer-org-link" href="https://www.fsc.go.kr" target="_blank" rel="noopener"><img src="../images/org-fsc.png" alt="금융위원회"><span>금융위원회</span></a>
+        <a class="footer-org-link" href="https://www.moef.go.kr" target="_blank" rel="noopener"><img src="../images/org-moef.png" alt="기획재정부"><span>기획재정부</span></a>
+        <a class="footer-org-link" href="https://www.cica.or.kr" target="_blank" rel="noopener"><img src="../images/org-cica.png" alt="신용정보협회"><span>신용정보협회</span></a>
+        <a class="footer-org-link" href="https://www.fss.or.kr" target="_blank" rel="noopener"><img src="../images/org-fss.png" alt="금융감독원"><span>금융감독원</span></a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2025 새한신용정보주식회사 일산지사. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+function showTab(id){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  event.target.classList.add('active');
+}
+// URL hash로 탭 이동
+const hash = location.hash.replace('#','');
+if(hash && document.getElementById('tab-'+hash)) showTab(hash);
+</script>
+<script>
+  (function(){var w=window;if(w.ChannelIO){return;}var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(args){ch.q.push(args);};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return;}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x);}}if(document.readyState==="complete"){l();}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l);}})();
+  ChannelIO('boot', {pluginKey: '051a4984-9c5f-41e2-873e-60fdfc117c1f'});
+</script>
+<script src="../js/shs-data.js"></script>
+<script>SHS.applyAll();</script>
+</body>
+</html>
+
